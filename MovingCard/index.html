@@ -1,20 +1,24 @@
 <div class="card-container">
-    <div class="container" id="godot">
+    <div class="container" id="godot" aria-label="마루호도.... 넌 지켰어야 했다">
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
-    <div class="container" id="naruhodo">
+
+    <div class="container" id="naruhodo" aria-label="과연 나루호도!">
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
-    <div class="container" id="mizzrugi">
+
+    <div class="container" id="mizzrugi" aria-label="벨보이로 팁을 그정도 받을 수 있다면 검사같은건 되지 않았을 것이다!">
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
-    <div class="container" id="mayoi">
+
+    <div class="container" id="mayoi" aria-label="나루호도! 라면 먹으러 가자!">
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
+
 </div>
 
 <script>
@@ -39,15 +43,23 @@
             container.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)';
             overlay.style.filter = 'opacity(0)'; // 오버레이를 다시 숨김
         });
+
+        container.addEventListener('click', function() {
+            // aria-label 값을 가져옵니다.
+            var ariaLabel = container.getAttribute('aria-label');
+            // 알림 메시지를 커스터마이즈하여 표시합니다.
+            alert(ariaLabel);
+        });
+
     });
 </script>
 
 <style>
     .card-container {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin: 20px;
+        display: flex;  /*자식 요소들이 자유롭게 움직이도록 함*/
+        justify-content: space-between; /*양 끝에 여백이 생기도록 하고 그 사이 카드들의 간격이 일정하도록 함*/
+        flex-wrap: wrap;    /*공간이 모자라면 줄바꿈을 할 수 있도록 함*/
+        margin: 20px;       /*이 요소의 주변에 20px의 여백이 생김*/
     }
 
     #godot .card {
@@ -91,14 +103,20 @@
     }
 
     @keyframes sparkle {
-        0% {
+         0% {
             background-position: 0% 0%;
         }
+        25% {
+            background-position: 100% 0%; /* 오른쪽 위로 */
+        }
         50% {
-            background-position: 100% 100%;
+            background-position: 100% 100%; /* 오른쪽 아래로 */
+        }
+        75% {
+            background-position: 0% 100%; /* 왼쪽 아래로 */
         }
         100% {
-            background-position: 0% 100%;
+            background-position: 0% 0%; /* 왼쪽 위로 */
         }
     }
 
@@ -109,4 +127,5 @@
         background-size: cover;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+
 </style>
