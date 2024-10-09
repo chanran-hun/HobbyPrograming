@@ -28,17 +28,15 @@
             var rotateY = -1 / 5 * x + 20;
             var rotateX = 4 / 30 * y - 20;
 
-            overlay.style = `background-position: ${x / 5 + y / 5}%;`;
-            container.style = `transform: perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            overlay.style = `background-position : ${x / 5 + y / 5}%`;
+            container.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
             // 오버레이 애니메이션 시작
-            overlay.classList.add('moving');
-            overlay.style.filter = 'opacity(0.8)'; // 마우스를 올렸을 때 오버레이가 보이도록 설정
+            overlay.style.filter = 'opacity(1)'; // 마우스를 올렸을 때 오버레이가 보이도록 설정
         });
 
         container.addEventListener('mouseout', function() {
-            container.style = 'transform: perspective(350px) rotateY(0deg) rotateX(0deg);';
-            overlay.classList.remove('moving'); // 마우스가 나가면 애니메이션 중지
+            container.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)';
             overlay.style.filter = 'opacity(0)'; // 오버레이를 다시 숨김
         });
     });
@@ -69,8 +67,8 @@
     }
 
     .container {
-        width: 220px; 
-        height: 310px; 
+        width: 220px;
+        height: 310px;
         transition: all 0.1s;
         position: relative;
         margin: 10px;
@@ -78,29 +76,36 @@
 
     .overlay {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        filter: opacity(0); /* 처음에는 보이지 않도록 설정 */
-        transition: all 0.5s ease-in-out; /* 부드러운 전환 효과 */
+        width: 220px;
+        height: 310px;
+        background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.6),
+            rgba(255, 215, 0, 0.6),
+            rgba(255, 0, 255, 0.3));
+        background-size: 200% 200%;
+        animation: sparkle 2s infinite alternate;
+        filter: opacity(0);
+        transition: filter 0.5s ease-in-out;
         border-radius: 10px; /* 둥근 모서리 추가 */
     }
 
-    .moving {
-        animation: pulse 1.5s infinite; /* 애니메이션 지속 시간 */
-    }
-
-    @keyframes pulse {
-        0% { background-color: rgba(255, 0, 0, 0.5); }   /* 빨간색 */
-        25% { background-color: rgba(0, 255, 0, 0.5); }  /* 초록색 */
-        50% { background-color: rgba(0, 0, 255, 0.5); }  /* 파란색 */
-        75% { background-color: rgba(255, 255, 0, 0.5); } /* 노란색 */
-        100% { background-color: rgba(255, 0, 255, 0.5); } /* 보라색 */
+    @keyframes sparkle {
+        0% {
+            background-position: 0% 0%;
+        }
+        50% {
+            background-position: 100% 100%;
+        }
+        100% {
+            background-position: 0% 100%;
+        }
     }
 
     .card {
-        width: 220px; 
+        width: 220px;
         height: 310px;
-        border-radius: 10px; /* 카드도 둥근 모서리 */
+        border-radius: 10px;
         background-size: cover;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
