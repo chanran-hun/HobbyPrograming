@@ -18,6 +18,11 @@
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
+
+    <div class="container" id="karma" aria-label="...나는 반드시, 당신을 쓰러뜨릴 거야! 각오하고 있으라고...">
+        <div class="overlay"></div>
+        <div class="card"></div>
+    </div>
 </div>
 
 <!-- 팝업창 추가 -->
@@ -61,7 +66,8 @@
                 'godot': '고도가 말한다',
                 'naruhodo': '나루호도가 말한다',
                 'mizzrugi': '미츠루기가 말한다',
-                'mayoi': '마요이가 말한다'
+                'mayoi': '마요이가 말한다',
+                'karma' : '메이가 말한다'
             };
 
             var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
@@ -78,6 +84,13 @@
 </script>
 
 <style>
+    body {
+        background-image: url("court.jpg"); /* 배경 이미지 경로 */
+        background-size: cover; /* 배경 이미지가 화면 크기에 맞게 조절됨 */
+        background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정 */
+        background-position: center; /* 배경 이미지를 중앙에 위치시킴 */
+    }
+
     .card-container {
         display: flex;  /*자식 요소들이 자유롭게 움직이도록 함*/
         justify-content: space-between; /*양 끝에 여백이 생기도록 하고 그 사이 카드들의 간격이 일정하도록 함*/
@@ -86,7 +99,7 @@
     }
 
     #godot .card {
-        background-image: url("godot.jpeg");
+        background-image: url("godot.png");
     }
 
     #naruhodo .card {
@@ -98,7 +111,11 @@
     }
 
     #mayoi .card {
-        background-image: url("mayoi.jpg");
+        background-image: url("mayoi.png");
+    }
+
+    #karma .card {
+        background-image: url("karma.webp");
     }
 
     .container {
@@ -110,17 +127,17 @@
     }
 
     .overlay {
-        position: absolute;
-        width: 220px;
+        position: absolute; /*부모 요소에 대해 절대적인 위치를 가지게 함*/
+        width: 220px;       
         height: 310px;
-        background: linear-gradient(120deg,
+        background: linear-gradient(120deg,     /*120도 방향으로 4가지 색을 가지게 해서 홀로그램 효과를 내게 함*/
             rgba(255, 255, 255, 0.3),
             rgba(255, 255, 255, 0.6),
             rgba(255, 215, 0, 0.6),
             rgba(255, 0, 255, 0.3));
-        background-size: 200% 200%;
-        animation: sparkle 2s infinite alternate;
-        filter: opacity(0);
+        background-size: 200% 200%;         /*그라데이션의 크기를 200%로 설정함*/
+        animation: sparkle 2s infinite alternate;   /*sparkle이라는 애니메이션을 2초 동안 진행하며, 무한 반복하고, 애니메이션이 끝나면 반대 방향으로 돌아가는 효과를 줌*/
+        filter: opacity(0); /*불투명도를 0으로함*/
         transition: filter 0.5s ease-in-out;
         border-radius: 10px; /* 둥근 모서리 추가 */
     }
