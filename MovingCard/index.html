@@ -1,28 +1,37 @@
 <div class="card-container">
-    <div class="container" id="godot" aria-label="마루호도.... 넌 지켰어야 했다">
+    <div class="container" id="godot" aria-label="…내 세계에, 《빨강》은 존재하지 않아. 이건 분명…… 내 《눈물》이다.">
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
 
-    <div class="container" id="naruhodo" aria-label="과연 나루호도!">
+    <div class="container" id="naruhodo" aria-label="나는...... 설령 무슨 일이 있어도, 어떤 일이 벌어져도...... 너희 두 사람만은, 끝까지 믿을 거야.">
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
 
-    <div class="container" id="mizzrugi" aria-label="벨보이로 팁을 그정도 받을 수 있다면 검사같은건 되지 않았을 것이다!">
+    <div class="container" id="mizzrugi" aria-label="슈퍼 스타는 머릿속도 슈퍼라는 말인가! 주스 날라주고 돈다발을 받을 수 있다면······! 검사 따위는 때려치고 말겠다!">
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
 
-    <div class="container" id="mayoi" aria-label="나루호도! 라면 먹으러 가자!">
+    <div class="container" id="mayoi" aria-label="...아! 저 그렇게 수상한 애 아니에요! 그냥 영매사예요. .... 수행 중인.">
         <div class="overlay"></div>
         <div class="card"></div>
     </div>
-
 </div>
+
+<!-- 팝업창 추가 -->
+<dialog id="popup" aria-labelledby="popup-title">
+    <h2 id="popup-title">제목</h2>
+    <p id="popup-content">내용이 여기에 표시됩니다.</p>
+    <button id="close-popup">닫기</button>
+</dialog>
 
 <script>
     var containers = document.querySelectorAll('.container');
+    var popup = document.getElementById('popup');
+    var popupContent = document.getElementById('popup-content');
+    var closePopupButton = document.getElementById('close-popup');
 
     containers.forEach(function(container) {
         var overlay = container.querySelector('.overlay');
@@ -45,10 +54,24 @@
         });
 
         container.addEventListener('click', function() {
-            // aria-label 값을 가져옵니다.
             var ariaLabel = container.getAttribute('aria-label');
-            // 알림 메시지를 커스터마이즈하여 표시합니다.
-            alert(ariaLabel);
+            popupContent.textContent = ariaLabel; // 팝업에 aria-label 내용 넣기
+            // 제목 설정 (각 카드 ID에 따라 다르게 설정)
+            var titleMap = {
+                'godot': '고도가 말한다',
+                'naruhodo': '나루호도가 말한다',
+                'mizzrugi': '미츠루기가 말한다',
+                'mayoi': '마요이가 말한다'
+            };
+
+            var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
+            document.getElementById('popup-title').textContent = title; // 제목 설정
+            popup.showModal(); // 팝업 열기
+        });
+
+        // 닫기 버튼 클릭 시 팝업 닫기
+        closePopupButton.addEventListener('click', function() {
+            popup.close(); // 팝업 닫기
         });
 
     });
@@ -81,8 +104,8 @@
     .container {
         width: 220px;
         height: 310px;
-        transition: all 0.1s;
-        position: relative;
+        transition: all 0.1s;    /* 모든 속성 변화에 대해 0.1초의 시간 동안 부드럽게 전환되도록 설정 */
+        position: relative;      /* 요소의 위치를 상대적으로 설정하여, 자식 요소가 절대 위치로 설정될 수 있도록 함 */
         margin: 10px;
     }
 
@@ -128,4 +151,15 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
+    dialog {
+        border: none;
+        border-radius: 10px;
+        padding: 20px;
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5); /* 배경 어둡게 */
+    }
 </style>
