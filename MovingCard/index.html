@@ -1,27 +1,38 @@
 <div class="card-container">
-    <div class="container" id="godot" aria-label="…내 세계에, 《빨강》은 존재하지 않아. 이건 분명…… 내 《눈물》이다.">
+    <div class="container" id="godot">
         <div class="overlay"></div>
         <div class="card"></div>
+        <div class="label">…내 세계에, <span class='bold'>《빨강》</span>은 존재하지 않아. 이건 분명…… 내 <span class='bold'>《눈물》</span>이다.</div>
     </div>
 
-    <div class="container" id="naruhodo" aria-label="나는...... 설령 무슨 일이 있어도, 어떤 일이 벌어져도...... 너희 두 사람만은, 끝까지 믿을 거야.">
+    <div class="container" id="naruhodo">
         <div class="overlay"></div>
         <div class="card"></div>
+        <div class="label">나는...... 설령 무슨 일이 있어도, 어떤 일이 벌어져도...... 너희 두 사람만은, 끝까지 믿을 거야.</div>
     </div>
 
-    <div class="container" id="mizzrugi" aria-label="슈퍼 스타는 머릿속도 슈퍼라는 말인가! 주스 날라주고 돈다발을 받을 수 있다면······! 검사 따위는 때려치고 말겠다!">
+    <div class="container" id="mizzrugi">
         <div class="overlay"></div>
         <div class="card"></div>
+        <div class="label">슈퍼 스타는 머릿속도 슈퍼라는 말인가! 주스 날라주고 돈다발을 받을 수 있다면······! 검사 따위는 때려치고 말겠다!</div>
     </div>
 
-    <div class="container" id="mayoi" aria-label="...아! 저 그렇게 수상한 애 아니에요! 그냥 영매사예요. .... 수행 중인.">
+    <div class="container" id="mayoi">
         <div class="overlay"></div>
         <div class="card"></div>
+        <div class="label">...아! 저 그렇게 수상한 애 아니에요! 그냥 영매사예요. .... 수행 중인.</div>
     </div>
 
-    <div class="container" id="karma" aria-label="...나는 반드시, 당신을 쓰러뜨릴 거야! 각오하고 있으라고...">
+    <div class="container" id="karma">
         <div class="overlay"></div>
         <div class="card"></div>
+        <div class="label">...나는 반드시, 당신을 쓰러뜨릴 거야! 각오하고 있으라고...</div>
+    </div>
+
+    <div class="container" id="chihiro">
+        <div class="overlay"></div>
+        <div class="card"></div>
+        <div class="label">나루호도 군. 발상을 역전해 보는 거야.</div>
     </div>
 </div>
 
@@ -40,6 +51,8 @@
 
     containers.forEach(function(container) {
         var overlay = container.querySelector('.overlay');
+
+        // 마우스 움직임에 따라 애니메이션 효과
         container.addEventListener('mousemove', function(e) {
             var x = e.offsetX;
             var y = e.offsetY;
@@ -50,24 +63,26 @@
             container.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
             // 오버레이 애니메이션 시작
-            overlay.style.filter = 'opacity(1)'; // 마우스를 올렸을 때 오버레이가 보이도록 설정
+            overlay.style.filter = 'opacity(1)';
         });
 
         container.addEventListener('mouseout', function() {
             container.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)';
-            overlay.style.filter = 'opacity(0)'; // 오버레이를 다시 숨김
+            overlay.style.filter = 'opacity(0)';
         });
 
         container.addEventListener('click', function() {
-            var ariaLabel = container.getAttribute('aria-label');
-            popupContent.textContent = ariaLabel; // 팝업에 aria-label 내용 넣기
+            var labelText = container.querySelector('.label').innerHTML; // .label의 내용을 가져옴
+            popupContent.innerHTML = labelText; // 팝업에 내용 넣기
+
             // 제목 설정 (각 카드 ID에 따라 다르게 설정)
             var titleMap = {
                 'godot': '고도가 말한다',
                 'naruhodo': '나루호도가 말한다',
                 'mizzrugi': '미츠루기가 말한다',
                 'mayoi': '마요이가 말한다',
-                'karma' : '메이가 말한다'
+                'karma': '메이가 말한다',
+                'chihiro': '치히로가 말한다'
             };
 
             var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
@@ -118,6 +133,10 @@
         background-image: url("karma.webp");
     }
 
+    #chihiro .card {
+        background-image: url("chihiro.webp");
+    }
+
     .container {
         width: 220px;
         height: 310px;
@@ -142,20 +161,20 @@
         border-radius: 10px; /* 둥근 모서리 추가 */
     }
 
-    @keyframes sparkle {
-         0% {
+    @keyframes sparkle {    /*애니메이션의 움직임을 정의 sparkle은 애니메이션의 이름 %는 진행 상황을 나타내는 말*/
+         0% {   /*시작 : 왼쪽 위*/
             background-position: 0% 0%;
         }
-        25% {
+        25% {   /*1/4지점 : 오른쪽 위*/
             background-position: 100% 0%; /* 오른쪽 위로 */
         }
-        50% {
-            background-position: 100% 100%; /* 오른쪽 아래로 */
+        50% {   /*절반지점 : 오른쪽 아래*/
+            background-position: 100% 100%; /* 오른쪽 아래 */
         }
-        75% {
-            background-position: 0% 100%; /* 왼쪽 아래로 */
+        75% {   /*3/4지점 : 왼쪽 아래*/
+            background-position: 0% 100%; /* 왼쪽 아래 */
         }
-        100% {
+        100% {  /*완료시 : 처음 위치로 돌아가기*/
             background-position: 0% 0%; /* 왼쪽 위로 */
         }
     }
@@ -173,10 +192,21 @@
         border-radius: 10px;
         padding: 20px;
         width: 300px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        background-color: black;
+        color: white; /* 글자 색 설정 */
     }
 
     dialog::backdrop {
-        background: rgba(0, 0, 0, 0.5); /* 배경 어둡게 */
+        background: rgba(0, 0, 0, 0.7); /* 배경 어둡게 */
     }
+    
+    .label {
+        display: none; /* 기본적으로 라벨을 보이지 않게 설정 */
+    }
+
+    .bold {
+        font-weight: bold; /* 글자를 굵게 만드는 CSS */
+    }
+
 </style>
