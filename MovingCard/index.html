@@ -2,13 +2,13 @@
     <div class="container" id="godot">
         <div class="overlay"></div>
         <div class="card"></div>
-        <div class="label">…내 세계에, <span class='bold'>《빨강》</span>은 존재하지 않아. 이건 분명…… 내 <span class='bold'>《눈물》</span>이다.</div>
+        <div class="label">…내 세계에, 《<span class='bold' style="color:crimson;">빨강</span>》은 존재하지 않아. 이건 분명…… 내 《<span class='bold' style="color: darkgray;">눈물</span>》이다.</div>
     </div>
 
     <div class="container" id="naruhodo">
         <div class="overlay"></div>
         <div class="card"></div>
-        <div class="label">나는...... 설령 무슨 일이 있어도, 어떤 일이 벌어져도...... 너희 두 사람만은, 끝까지 믿을 거야.</div>
+        <div class="label">증인의 위증을 간파하고, 진실을 찾는 것... <span class='bold'>그것이 제 사명입니다!</span></div>
     </div>
 
     <div class="container" id="mizzrugi">
@@ -33,6 +33,12 @@
         <div class="overlay"></div>
         <div class="card"></div>
         <div class="label">나루호도 군. 발상을 역전해 보는 거야.</div>
+    </div>
+
+    <div class="container" id="ito">
+        <div class="overlay"></div>
+        <div class="card"></div>
+        <div class="label">우오오오오오, 또 당신임까!!</div>
     </div>
 </div>
 
@@ -82,7 +88,8 @@
                 'mizzrugi': '미츠루기가 말한다',
                 'mayoi': '마요이가 말한다',
                 'karma': '메이가 말한다',
-                'chihiro': '치히로가 말한다'
+                'chihiro': '치히로가 말한다',
+                'ito' : '이토노코가 말한다'
             };
 
             var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
@@ -135,6 +142,10 @@
 
     #chihiro .card {
         background-image: url("chihiro.webp");
+    }
+
+    #ito .card {
+        background-image: url("ito.webp");
     }
 
     .container {
@@ -198,7 +209,7 @@
     }
 
     dialog::backdrop {
-        background: rgba(0, 0, 0, 0.7); /* 배경 어둡게 */
+        backdrop-filter: blur(20px);
     }
     
     .label {
@@ -206,7 +217,7 @@
     }
 
     .bold {
-        font-weight: bold; /* 글자를 굵게 만드는 CSS */
+        font-weight: 900; /* 글자를 굵게 만드는 CSS */
     }
 
 </style>
