@@ -1,4 +1,4 @@
-﻿<div class="card-container">
+﻿﻿<div class="card-container">
     <div class="container" id="godot">
         <div class="overlay"></div>
         <div class="card"></div>
@@ -14,7 +14,7 @@
     <div class="container" id="mizzrugi">
         <div class="overlay"></div>
         <div class="card"></div>
-        <div class="label">슈퍼 스타는 머릿속도 슈퍼라는 말인가! 주스 날라주고 돈다발을 받을 수 있다면······! 검사 따위는 때려치고 말겠다!</div>
+        <div class="label">슈퍼 스타는 머릿속도 슈퍼라는 말인가! 주스 날라주고 돈다발을 받을 수 있다면······! <span class='bold'>검사 따위는 때려치고 말겠다!</span></div>
     </div>
 
     <div class="container" id="mayoi">
@@ -39,6 +39,12 @@
         <div class="overlay"></div>
         <div class="card"></div>
         <div class="label">우오오오오오, 또 당신임까!!</div>
+    </div>
+
+    <div class="container" id="harumi">
+        <div class="overlay"></div>
+        <div class="card"></div>
+        <div class="label"><span class='bold'>당신이 나루호도씨군요. 저.. 마요이님의.. 소중한 사람..<span></div>
     </div>
 </div>
 
@@ -89,7 +95,8 @@
                 'mayoi': '마요이가 말한다',
                 'karma': '메이가 말한다',
                 'chihiro': '치히로가 말한다',
-                'ito' : '이토노코가 말한다'
+                'ito' : '이토노코가 말한다',
+                'harumi' : '하루미가 말한다'
             };
 
             var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
@@ -146,6 +153,10 @@
 
     #ito .card {
         background-image: url("ito.webp");
+    }
+
+    #harumi .card {
+        background-image: url("harumi.webp");
     }
 
     .container {
