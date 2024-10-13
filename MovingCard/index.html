@@ -88,7 +88,6 @@
     containers.forEach(function(container) {
         var overlay = container.querySelector('.overlay');
 
-        // 마우스 움직임에 따라 애니메이션 효과
         container.addEventListener('mousemove', function(e) {
             var x = e.offsetX;
             var y = e.offsetY;
@@ -215,50 +214,32 @@
         position: absolute; /*부모 요소에 대해 절대적인 위치를 가지게 함*/
         width: 220px;       
         height: 310px;
-        background: linear-gradient(120deg,     /*120도 방향으로 4가지 색을 가지게 해서 홀로그램 효과를 내게 함*/
+        background: linear-gradient(45deg,     /*120도 방향으로 4가지 색을 가지게 해서 홀로그램 효과를 내게 함*/
             rgba(255, 255, 255, 0.3),
             rgba(255, 255, 255, 0.6),
             rgba(255, 215, 0, 0.6),
             rgba(255, 0, 255, 0.3));
-        background-size: 200% 200%;         /*그라데이션의 크기를 200%로 설정함*/
-        animation: sparkle 2s infinite alternate;   /*sparkle이라는 애니메이션을 2초 동안 진행하며, 무한 반복하고, 애니메이션이 끝나면 반대 방향으로 돌아가는 효과를 줌*/
+        background-size: 100% 100%;         /*지금 크기가 100%라서 움직임을 설정해뒀지만 움직이지 않음*/
+        background-repeat: no-repeat;
         filter: opacity(0); /*불투명도를 0으로함*/
         transition: filter 0.5s ease-in-out;
         border-radius: 10px; /* 둥근 모서리 추가 */
-    }
-
-    @keyframes sparkle {    /*애니메이션의 움직임을 정의 sparkle은 애니메이션의 이름 %는 진행 상황을 나타내는 말*/
-         0% {   /*시작 : 왼쪽 위*/
-            background-position: 0% 0%;
-        }
-        25% {   /*1/4지점 : 오른쪽 위*/
-            background-position: 100% 0%; /* 오른쪽 위로 */
-        }
-        50% {   /*절반지점 : 오른쪽 아래*/
-            background-position: 100% 100%; /* 오른쪽 아래 */
-        }
-        75% {   /*3/4지점 : 왼쪽 아래*/
-            background-position: 0% 100%; /* 왼쪽 아래 */
-        }
-        100% {  /*완료시 : 처음 위치로 돌아가기*/
-            background-position: 0% 0%; /* 왼쪽 위로 */
-        }
     }
 
     .card {
         width: 220px;
         height: 310px;
         border-radius: 10px;
-        background-size: cover;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-size :contain;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 
     dialog {
         border: none;
         border-radius: 10px;
-        padding: 20px;
+        padding: 10px;
         width: 300px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         background-color: black;
         color: white; /* 글자 색 설정 */
     }
