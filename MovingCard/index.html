@@ -20,31 +20,55 @@
     <div class="container" id="mayoi">
         <div class="overlay"></div>
         <div class="card"></div>
-        <div class="label">...아! 저 그렇게 수상한 애 아니에요! 그냥 영매사예요. .... 수행 중인.</div>
+        <div class="label">아, 딱딱한 격식은 서로 차리지 말자구요! <span class="bold">잘 부탁해! 나루호도!</span></div>
     </div>
 
     <div class="container" id="karma">
         <div class="overlay"></div>
         <div class="card"></div>
-        <div class="label">...나는 반드시, 당신을 쓰러뜨릴 거야! 각오하고 있으라고...</div>
+        <div class="label">싸울 의지조차 없어질 때까지, <span class="bold">몇 번이고 짓밟아 주지!</span></div>
     </div>
 
     <div class="container" id="chihiro">
         <div class="overlay"></div>
         <div class="card"></div>
-        <div class="label">나루호도 군. 발상을 역전해 보는 거야.</div>
+        <div class="label">나루호도 군. <span class="bold">발상을 역전해 보는 거야.</span></div>
     </div>
 
     <div class="container" id="ito">
         <div class="overlay"></div>
         <div class="card"></div>
-        <div class="label">우오오오오오, 또 당신임까!!</div>
+        <div class="label">우오오오오오, <span class="bold">또 당신임까!!</span></div>
     </div>
 
     <div class="container" id="harumi">
         <div class="overlay"></div>
         <div class="card"></div>
         <div class="label"><span class='bold'>당신이 나루호도씨군요. 저.. 마요이님의.. 소중한 사람..<span></div>
+    </div>
+
+    <div class="container" id="texas">
+        <div class="overlay"></div>
+        <div class="card"></div>
+        <div class="label"><span class='bold'>내동생</span>.....나보다 똑똑했지...</div>
+    </div>
+
+    <div class="container" id="yahari">
+        <div class="overlay"></div>
+        <div class="card"></div>
+        <div class="label">사건의 뒤에는 <span class='bold'>역시나 야하리</span></div>
+    </div>
+
+    <div class="container" id="ganto">
+        <div class="overlay"></div>
+        <div class="card"></div>
+        <div class="label">어때 나루호도 형아, <span class='bold'>요즘, 수영했어?</span></div>
+    </div>
+
+    <div class="container" id="decision">
+        <div class="overlay"></div>
+        <div class="card"></div>
+        <div class="label">뭡니까! <span class='bold'>저만 따돌리는 겁니까!!</span></div>
     </div>
 </div>
 
@@ -96,7 +120,11 @@
                 'karma': '메이가 말한다',
                 'chihiro': '치히로가 말한다',
                 'ito' : '이토노코가 말한다',
-                'harumi' : '하루미가 말한다'
+                'harumi' : '하루미가 말한다',
+                'texas' : '자이몬이 말한다',
+                'yahari' : '야하리가 말한다',
+                'ganto' : '간토 청장이 말한다',
+                'decision' : '재판장이 말한다'
             };
 
             var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
@@ -157,6 +185,22 @@
 
     #harumi .card {
         background-image: url("harumi.webp");
+    }
+
+    #texas .card {
+        background-image: url("texas.webp");
+    }
+
+    #yahari .card {
+        background-image: url("yahari.webp");
+    }
+
+    #ganto .card {
+        background-image: url("ganto.webp");
+    }
+
+    #decision .card {
+        background-image: url("decision.webp");
     }
 
     .container {
