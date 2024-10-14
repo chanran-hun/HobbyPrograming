@@ -75,13 +75,17 @@
 <div id="backdrop"></div>
 
 <div id="popup" aria-labelledby="popup-title">
-    <h2 id="popup-title">제목</h2>
+    <h1 id="popup-title">제목</h1>
     <p id="popup-content">내용이 여기에 표시됩니다.</p>
     <button id="close-popup">닫기</button>
 </div>
 
-<div id="picture" aria-labelledby="popup-title">
+<div id="picture">
 </div>
+
+<div id="player"></div> 
+
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
     var containers = document.querySelectorAll('.container');
@@ -90,6 +94,21 @@
     var closePopupButton = document.getElementById('close-popup');
     var picture = document.getElementById('picture');
     var backdrop = document.getElementById('backdrop');
+    var player = document.getElementById('player');
+    var playerd;
+
+    function onYouTubeIframeAPIReady() {
+        playerd = new YT.Player('player', {
+            height: '450px',
+            width: '600px',
+            videoId: '', // 기본적으로 빈 값으로 설정
+            events: {
+                'onReady': function(event) {
+                    event.target.playVideo(); // 비디오 자동 재생
+                }
+            }
+        });
+    }
 
     containers.forEach(function(container) {
         var overlay = container.querySelector('.overlay');
@@ -145,16 +164,33 @@
             'yahari' : 'yahari.webp',
             'ganto' : 'ganto.webp',
             'decision' : 'decision.webp'
-        };
+            };
+
+            var videoMap = {
+                'godot' : 'YKnE5EJF6yU',
+                'naruhodo' : 'ybABUTgBXGU',
+                'mizzrugi' : 'ZO0ltA58KdQ',
+                'mayoi' : 'asP9caUQp9E',
+                'karma' : 'WlqpbJr3vfE',
+                'chihiro' : 'J3ZpQctjyXQ',
+                'ito' : 'aGUN5Rrm_uk',
+                'harumi' : 'uk7NkTT2zN8',
+                'texas' : 'GDmTSS3XpHs',
+                'yahari' : 'G3nqpasJudI',
+                'ganto' : 'QaEtDQgNmow',
+                'decision' : '5bjiGTrR4P0'
+            };
 
             var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
             document.getElementById('popup-title').textContent = title; // 제목 설정
 
-            popup.style.display = 'block'; // 팝업 열기
-
             var imageSrc = imageMap[container.id];
             picture.style.backgroundImage = `url(${imageSrc})`;
-        
+
+            var videoId = videoMap[container.id]; // 카드 ID에 따라 비디오 ID 설정
+            playerd.loadVideoById(videoId); // 비디오 로드
+
+            popup.style.display = 'block'; // 팝업 열기
             picture.style.display = 'block';
             backdrop.style.display = 'block';
         });
@@ -164,6 +200,7 @@
             popup.style.display = 'none';
             picture.style.display = 'none';
             backdrop.style.display = 'none';
+            playerd.stopVideo();
         });
 
     });
@@ -269,9 +306,10 @@
         display : none;
         position: fixed;
         top: 50%;
-        left: 50%;
+        left: 70%;
         transform: translate(-50%, -50%);
-        width: 300px;
+        width: 600px;
+        height : 600px;
         background-color: black;
         color: white;
         padding: 10px;
@@ -295,16 +333,25 @@
         background-position: center;
     }
 
+    #close-popup{
+        position : absolute;
+        bottom : 10px;
+    }
+
+    #player {
+        display : none;
+    }
+
     #backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* 배경을 약간 어둡게 */
-    backdrop-filter: blur(10px); /* 배경 블러 처리 */
-    z-index: 900; /* popup보다 아래에 위치 */
-    display: none; /* 기본적으로는 숨김 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5); /* 배경을 약간 어둡게 */
+        backdrop-filter: blur(10px); /* 배경 블러 처리 */
+        z-index: 900; /* popup보다 아래에 위치 */
+        display: none; /* 기본적으로는 숨김 */
     }
 
     .label {
