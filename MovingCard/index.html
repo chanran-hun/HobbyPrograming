@@ -72,18 +72,24 @@
     </div>
 </div>
 
-<!-- 팝업창 추가 -->
-<dialog id="popup" aria-labelledby="popup-title">
+<div id="backdrop"></div>
+
+<div id="popup" aria-labelledby="popup-title">
     <h2 id="popup-title">제목</h2>
     <p id="popup-content">내용이 여기에 표시됩니다.</p>
     <button id="close-popup">닫기</button>
-</dialog>
+</div>
+
+<div id="picture" aria-labelledby="popup-title">
+</div>
 
 <script>
     var containers = document.querySelectorAll('.container');
     var popup = document.getElementById('popup');
     var popupContent = document.getElementById('popup-content');
     var closePopupButton = document.getElementById('close-popup');
+    var picture = document.getElementById('picture');
+    var backdrop = document.getElementById('backdrop');
 
     containers.forEach(function(container) {
         var overlay = container.querySelector('.overlay');
@@ -126,14 +132,38 @@
                 'decision' : '재판장이 말한다'
             };
 
+            var imageMap = {
+            'godot': 'godot.png',
+            'naruhodo': 'naruhodo.webp',
+            'mizzrugi': 'mizzrugi.png',
+            'mayoi': 'mayoi.png',
+            'karma': 'karma.webp',
+            'chihiro': 'chihiro.webp',
+            'ito' : 'ito.webp',
+            'harumi' : 'harumi.webp',
+            'texas' : 'texas.webp',
+            'yahari' : 'yahari.webp',
+            'ganto' : 'ganto.webp',
+            'decision' : 'decision.webp'
+        };
+
             var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
             document.getElementById('popup-title').textContent = title; // 제목 설정
-            popup.showModal(); // 팝업 열기
+
+            popup.style.display = 'block'; // 팝업 열기
+
+            var imageSrc = imageMap[container.id];
+            picture.style.backgroundImage = `url(${imageSrc})`;
+        
+            picture.style.display = 'block';
+            backdrop.style.display = 'block';
         });
 
         // 닫기 버튼 클릭 시 팝업 닫기
         closePopupButton.addEventListener('click', function() {
-            popup.close(); // 팝업 닫기
+            popup.style.display = 'none';
+            picture.style.display = 'none';
+            backdrop.style.display = 'none';
         });
 
     });
@@ -235,19 +265,48 @@
         background-position: center;
     }
 
-    dialog {
-        border: none;
-        border-radius: 10px;
-        padding: 10px;
+    #popup {
+        display : none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 300px;
         background-color: black;
-        color: white; /* 글자 색 설정 */
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        z-index: 1000; /* 배경보다 위에 표시 */
     }
 
-    dialog::backdrop {
-        backdrop-filter: blur(20px);
+    #picture {
+        display : none;
+        position: fixed; /* 화면의 특정 위치에 고정 */
+        margin:0;
+        top: 10px; 
+        left : 10px;
+        width: 600px;
+        height: 750px;
+        border: none;
+        background-color: transparent;
+        z-index: 10000; /* z-index를 최상단으로 설정 */
+        background-size :contain;
+        background-repeat: no-repeat;
+        background-position: center;
     }
-    
+
+    #backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* 배경을 약간 어둡게 */
+    backdrop-filter: blur(10px); /* 배경 블러 처리 */
+    z-index: 900; /* popup보다 아래에 위치 */
+    display: none; /* 기본적으로는 숨김 */
+    }
+
     .label {
         display: none; /* 기본적으로 라벨을 보이지 않게 설정 */
     }
