@@ -1,0 +1,154 @@
+body {
+    background-image: url("court.jpg"); /* 배경 이미지 경로 */
+    background-size: cover; /* 배경 이미지가 화면 크기에 맞게 조절됨 */
+    background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정 */
+    background-position: center; /* 배경 이미지를 중앙에 위치시킴 */
+}
+
+.card-container {
+    display: flex;  /*자식 요소들이 자유롭게 움직이도록 함*/
+    justify-content: space-between; /*양 끝에 여백이 생기도록 하고 그 사이 카드들의 간격이 일정하도록 함*/
+    flex-wrap: wrap;    /*공간이 모자라면 줄바꿈을 할 수 있도록 함*/
+    margin: 20px;       /*이 요소의 주변에 20px의 여백이 생김*/
+}
+
+#godot .card {
+    background-image: url("godot.png");
+}
+
+#naruhodo .card {
+    background-image: url("naruhodo.webp");
+}
+
+#mizzrugi .card {
+    background-image: url("mizzrugi.png");
+}
+
+#mayoi .card {
+    background-image: url("mayoi.png");
+}
+
+#karma .card {  
+    background-image: url("karma.webp");
+}
+
+#chihiro .card {
+    background-image: url("chihiro.png");
+}
+
+#ito .card {
+    background-image: url("ito.webp");
+}
+
+#harumi .card {
+    background-image: url("harumi.webp");
+}
+
+#texas .card {
+    background-image: url("texas.webp");
+}
+
+#yahari .card {
+    background-image: url("yahari.webp");
+}
+
+#ganto .card {
+    background-image: url("ganto.webp");
+}
+
+#decision .card {
+    background-image: url("decision.webp");
+}
+
+.container {
+    width: 220px;
+    height: 310px;
+    transition: all 0.1s;    /* 모든 속성 변화에 대해 0.1초의 시간 동안 부드럽게 전환되도록 설정 */
+    position: relative;      /* 요소의 위치를 상대적으로 설정하여, 자식 요소가 절대 위치로 설정될 수 있도록 함 */
+    margin: 10px;
+}
+
+.overlay {
+    position: absolute; /*부모 요소에 대해 절대적인 위치를 가지게 함*/
+    width: 220px;       
+    height: 310px;
+    background: linear-gradient(45deg,     /*120도 방향으로 4가지 색을 가지게 해서 홀로그램 효과를 내게 함*/
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 215, 0, 0.6),
+        rgba(255, 0, 255, 0.3));
+    background-size: 100% 100%;         /*지금 크기가 100%라서 움직임을 설정해뒀지만 움직이지 않음*/
+    background-repeat: no-repeat;
+    filter: opacity(0); /*불투명도를 0으로함*/
+    transition: filter 0.5s ease-in-out;
+    border-radius: 10px; /* 둥근 모서리 추가 */
+}
+
+.card {
+    width: 220px;
+    height: 310px;
+    border-radius: 10px;
+    background-size :contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#popup {
+    display : none;
+    position: fixed;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height : 600px;
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 1000; /* 배경보다 위에 표시 */
+}
+
+#picture {
+    display : none;
+    position: fixed; /* 화면의 특정 위치에 고정 */
+    margin:0;
+    top: 10px; 
+    left : 10px;
+    width: 600px;
+    height: 750px;
+    border: none;
+    background-color: transparent;
+    z-index: 10000; /* z-index를 최상단으로 설정 */
+    background-size :contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#close-popup{
+    position : absolute;
+    bottom : 10px;
+}
+
+#player {
+    display : none;
+}
+
+#backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); /* 배경을 약간 어둡게 */
+    backdrop-filter: blur(10px); /* 배경 블러 처리 */
+    z-index: 900; /* popup보다 아래에 위치 */
+    display: none; /* 기본적으로는 숨김 */
+}
+
+.label {
+    display: none; /* 기본적으로 라벨을 보이지 않게 설정 */
+}
+
+.bold {
+    font-weight: 900; /* 글자를 굵게 만드는 CSS */
+}   

@@ -1,365 +1,99 @@
-﻿﻿<div class="card-container">
-    <div class="container" id="godot">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">…내 세계에, 《<span class='bold' style="color:crimson;">빨강</span>》은 존재하지 않아. 이건 분명…… 내 《<span class='bold' style="color: darkgray;">눈물</span>》이다.</div>
+﻿﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>역전재판 카드 전시</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <div class="card-container">
+        <div class="container" id="godot">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">…내 세계에, 《<span class='bold' style="color:crimson;">빨강</span>》은 존재하지 않아. 이건 분명…… 내 《<span class='bold' style="color: darkgray;">눈물</span>》이다.</div>
+        </div>
+
+        <div class="container" id="naruhodo">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">증인의 위증을 간파하고, 진실을 찾는 것... <span class='bold'>그것이 제 사명입니다!</span></div>
+        </div>
+
+        <div class="container" id="mizzrugi">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">슈퍼 스타는 머릿속도 슈퍼라는 말인가! 주스 날라주고 돈다발을 받을 수 있다면······! <span class='bold'>검사 따위는 때려치고 말겠다!</span></div>
+        </div>
+
+        <div class="container" id="mayoi">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">아, 딱딱한 격식은 서로 차리지 말자구요! <span class="bold">잘 부탁해! 나루호도!</span></div>
+        </div>
+
+        <div class="container" id="karma">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">싸울 의지조차 없어질 때까지, <span class="bold">몇 번이고 짓밟아 주지!</span></div>
+        </div>
+
+        <div class="container" id="chihiro">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">나루호도 군. <span class="bold">발상을 역전해 보는 거야.</span></div>
+        </div>
+
+        <div class="container" id="ito">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">우오오오오오, <span class="bold">또 당신임까!!</span></div>
+        </div>
+
+        <div class="container" id="harumi">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label"><span class='bold'>당신이 나루호도씨군요. 저.. 마요이님의.. 소중한 사람..<span></div>
+        </div>
+
+        <div class="container" id="texas">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label"><span class='bold'>내동생</span>.....나보다 똑똑했지...</div>
+        </div>
+
+        <div class="container" id="yahari">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">사건의 뒤에는 <span class='bold'>역시나 야하리</span></div>
+        </div>
+
+        <div class="container" id="ganto">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">어때 나루호도 형아, <span class='bold'>요즘, 수영했어?</span></div>
+        </div>
+
+        <div class="container" id="decision">
+            <div class="overlay"></div>
+            <div class="card"></div>
+            <div class="label">뭡니까! <span class='bold'>저만 따돌리는 겁니까!!</span></div>
+        </div>
     </div>
 
-    <div class="container" id="naruhodo">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">증인의 위증을 간파하고, 진실을 찾는 것... <span class='bold'>그것이 제 사명입니다!</span></div>
+    <div id="backdrop"></div>
+
+    <div id="popup" aria-labelledby="popup-title">
+        <h1 id="popup-title">제목</h1>
+        <p id="popup-content">내용이 여기에 표시됩니다.</p>
+        <button id="close-popup">닫기</button>
     </div>
 
-    <div class="container" id="mizzrugi">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">슈퍼 스타는 머릿속도 슈퍼라는 말인가! 주스 날라주고 돈다발을 받을 수 있다면······! <span class='bold'>검사 따위는 때려치고 말겠다!</span></div>
-    </div>
+    <div id="picture"></div>
 
-    <div class="container" id="mayoi">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">아, 딱딱한 격식은 서로 차리지 말자구요! <span class="bold">잘 부탁해! 나루호도!</span></div>
-    </div>
+    <div id="player"></div> 
 
-    <div class="container" id="karma">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">싸울 의지조차 없어질 때까지, <span class="bold">몇 번이고 짓밟아 주지!</span></div>
-    </div>
-
-    <div class="container" id="chihiro">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">나루호도 군. <span class="bold">발상을 역전해 보는 거야.</span></div>
-    </div>
-
-    <div class="container" id="ito">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">우오오오오오, <span class="bold">또 당신임까!!</span></div>
-    </div>
-
-    <div class="container" id="harumi">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label"><span class='bold'>당신이 나루호도씨군요. 저.. 마요이님의.. 소중한 사람..<span></div>
-    </div>
-
-    <div class="container" id="texas">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label"><span class='bold'>내동생</span>.....나보다 똑똑했지...</div>
-    </div>
-
-    <div class="container" id="yahari">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">사건의 뒤에는 <span class='bold'>역시나 야하리</span></div>
-    </div>
-
-    <div class="container" id="ganto">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">어때 나루호도 형아, <span class='bold'>요즘, 수영했어?</span></div>
-    </div>
-
-    <div class="container" id="decision">
-        <div class="overlay"></div>
-        <div class="card"></div>
-        <div class="label">뭡니까! <span class='bold'>저만 따돌리는 겁니까!!</span></div>
-    </div>
-</div>
-
-<div id="backdrop"></div>
-
-<div id="popup" aria-labelledby="popup-title">
-    <h1 id="popup-title">제목</h1>
-    <p id="popup-content">내용이 여기에 표시됩니다.</p>
-    <button id="close-popup">닫기</button>
-</div>
-
-<div id="picture">
-</div>
-
-<div id="player"></div> 
-
-<script src="https://www.youtube.com/iframe_api"></script>
-
-<script>
-    var containers = document.querySelectorAll('.container');
-    var popup = document.getElementById('popup');
-    var popupContent = document.getElementById('popup-content');
-    var closePopupButton = document.getElementById('close-popup');
-    var picture = document.getElementById('picture');
-    var backdrop = document.getElementById('backdrop');
-    var player = document.getElementById('player');
-    var playerd;
-
-    function onYouTubeIframeAPIReady() {
-        playerd = new YT.Player('player', {
-            height: '450px',
-            width: '600px',
-            videoId: '', // 기본적으로 빈 값으로 설정
-            events: {
-                'onReady': function(event) {
-                    event.target.playVideo(); // 비디오 자동 재생
-                }
-            }
-        });
-    }
-
-    containers.forEach(function(container) {
-        var overlay = container.querySelector('.overlay');
-
-        container.addEventListener('mousemove', function(e) {
-            var x = e.offsetX;
-            var y = e.offsetY;
-            var rotateY = -1 / 5 * x + 20;
-            var rotateX = 4 / 30 * y - 20;
-
-            overlay.style = `background-position : ${x / 5 + y / 5}%`;
-            container.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-            // 오버레이 애니메이션 시작
-            overlay.style.filter = 'opacity(1)';
-        });
-
-        container.addEventListener('mouseout', function() {
-            container.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)';
-            overlay.style.filter = 'opacity(0)';
-        });
-
-        container.addEventListener('click', function() {
-            var labelText = container.querySelector('.label').innerHTML; // .label의 내용을 가져옴
-            popupContent.innerHTML = labelText; // 팝업에 내용 넣기
-
-            // 제목 설정 (각 카드 ID에 따라 다르게 설정)
-            var titleMap = {
-                'godot': '고도가 말한다',
-                'naruhodo': '나루호도가 말한다',
-                'mizzrugi': '미츠루기가 말한다',
-                'mayoi': '마요이가 말한다',
-                'karma': '메이가 말한다',
-                'chihiro': '치히로가 말한다',
-                'ito' : '이토노코가 말한다',
-                'harumi' : '하루미가 말한다',
-                'texas' : '자이몬이 말한다',
-                'yahari' : '야하리가 말한다',
-                'ganto' : '간토 청장이 말한다',
-                'decision' : '재판장이 말한다'
-            };
-
-            var imageMap = {
-            'godot': 'gdot.gif',
-            'naruhodo': 'naruhodo.webp',
-            'mizzrugi': 'mizzrugi.png',
-            'mayoi': 'mayoi.png',
-            'karma': 'karma.webp',
-            'chihiro': 'chihiro.png',
-            'ito' : 'ito.webp',
-            'harumi' : 'harumi.webp',
-            'texas' : 'texas.webp',
-            'yahari' : 'yahari.webp',
-            'ganto' : 'ganto.webp',
-            'decision' : 'decision.webp'
-            };
-
-            var videoMap = {
-                'godot' : 'YKnE5EJF6yU',
-                'naruhodo' : 'ybABUTgBXGU',
-                'mizzrugi' : 'ZO0ltA58KdQ',
-                'mayoi' : 'asP9caUQp9E',
-                'karma' : 'WlqpbJr3vfE',
-                'chihiro' : 'J3ZpQctjyXQ',
-                'ito' : 'aGUN5Rrm_uk',
-                'harumi' : 'uk7NkTT2zN8',
-                'texas' : 'GDmTSS3XpHs',
-                'yahari' : 'G3nqpasJudI',
-                'ganto' : 'QaEtDQgNmow',
-                'decision' : '5bjiGTrR4P0'
-            };
-
-            var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
-            document.getElementById('popup-title').textContent = title; // 제목 설정
-
-            var imageSrc = imageMap[container.id];
-            picture.style.backgroundImage = `url(${imageSrc})`;
-
-            var videoId = videoMap[container.id]; // 카드 ID에 따라 비디오 ID 설정
-            playerd.loadVideoById(videoId); // 비디오 로드
-
-            popup.style.display = 'block'; // 팝업 열기
-            picture.style.display = 'block';
-            backdrop.style.display = 'block';
-        });
-
-        // 닫기 버튼 클릭 시 팝업 닫기
-        closePopupButton.addEventListener('click', function() {
-            popup.style.display = 'none';
-            picture.style.display = 'none';
-            backdrop.style.display = 'none';
-            playerd.stopVideo();
-        });
-
-    });
-</script>
-
-<style>
-    body {
-        background-image: url("court.jpg"); /* 배경 이미지 경로 */
-        background-size: cover; /* 배경 이미지가 화면 크기에 맞게 조절됨 */
-        background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정 */
-        background-position: center; /* 배경 이미지를 중앙에 위치시킴 */
-    }
-
-    .card-container {
-        display: flex;  /*자식 요소들이 자유롭게 움직이도록 함*/
-        justify-content: space-between; /*양 끝에 여백이 생기도록 하고 그 사이 카드들의 간격이 일정하도록 함*/
-        flex-wrap: wrap;    /*공간이 모자라면 줄바꿈을 할 수 있도록 함*/
-        margin: 20px;       /*이 요소의 주변에 20px의 여백이 생김*/
-    }
-
-    #godot .card {
-        background-image: url("godot.png");
-    }
-
-    #naruhodo .card {
-        background-image: url("naruhodo.webp");
-    }
-
-    #mizzrugi .card {
-        background-image: url("mizzrugi.png");
-    }
-
-    #mayoi .card {
-        background-image: url("mayoi.png");
-    }
-
-    #karma .card {
-        background-image: url("karma.webp");
-    }
-
-    #chihiro .card {
-        background-image: url("chihiro.png");
-    }
-
-    #ito .card {
-        background-image: url("ito.webp");
-    }
-
-    #harumi .card {
-        background-image: url("harumi.webp");
-    }
-
-    #texas .card {
-        background-image: url("texas.webp");
-    }
-
-    #yahari .card {
-        background-image: url("yahari.webp");
-    }
-
-    #ganto .card {
-        background-image: url("ganto.webp");
-    }
-
-    #decision .card {
-        background-image: url("decision.webp");
-    }
-
-    .container {
-        width: 220px;
-        height: 310px;
-        transition: all 0.1s;    /* 모든 속성 변화에 대해 0.1초의 시간 동안 부드럽게 전환되도록 설정 */
-        position: relative;      /* 요소의 위치를 상대적으로 설정하여, 자식 요소가 절대 위치로 설정될 수 있도록 함 */
-        margin: 10px;
-    }
-
-    .overlay {
-        position: absolute; /*부모 요소에 대해 절대적인 위치를 가지게 함*/
-        width: 220px;       
-        height: 310px;
-        background: linear-gradient(45deg,     /*120도 방향으로 4가지 색을 가지게 해서 홀로그램 효과를 내게 함*/
-            rgba(255, 255, 255, 0.3),
-            rgba(255, 255, 255, 0.6),
-            rgba(255, 215, 0, 0.6),
-            rgba(255, 0, 255, 0.3));
-        background-size: 100% 100%;         /*지금 크기가 100%라서 움직임을 설정해뒀지만 움직이지 않음*/
-        background-repeat: no-repeat;
-        filter: opacity(0); /*불투명도를 0으로함*/
-        transition: filter 0.5s ease-in-out;
-        border-radius: 10px; /* 둥근 모서리 추가 */
-    }
-
-    .card {
-        width: 220px;
-        height: 310px;
-        border-radius: 10px;
-        background-size :contain;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    #popup {
-        display : none;
-        position: fixed;
-        top: 50%;
-        left: 70%;
-        transform: translate(-50%, -50%);
-        width: 600px;
-        height : 600px;
-        background-color: transparent;
-        color: white;
-        padding: 10px;
-        border-radius: 10px;
-        z-index: 1000; /* 배경보다 위에 표시 */
-    }
-
-    #picture {
-        display : none;
-        position: fixed; /* 화면의 특정 위치에 고정 */
-        margin:0;
-        top: 10px; 
-        left : 10px;
-        width: 600px;
-        height: 750px;
-        border: none;
-        background-color: transparent;
-        z-index: 10000; /* z-index를 최상단으로 설정 */
-        background-size :contain;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    #close-popup{
-        position : absolute;
-        bottom : 10px;
-    }
-
-    #player {
-        display : none;
-    }
-
-    #backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.5); /* 배경을 약간 어둡게 */
-        backdrop-filter: blur(10px); /* 배경 블러 처리 */
-        z-index: 900; /* popup보다 아래에 위치 */
-        display: none; /* 기본적으로는 숨김 */
-    }
-
-    .label {
-        display: none; /* 기본적으로 라벨을 보이지 않게 설정 */
-    }
-
-    .bold {
-        font-weight: 900; /* 글자를 굵게 만드는 CSS */
-    }
-
-</style>
+    <script src="script.js"></script>
+</body>
+</html>
