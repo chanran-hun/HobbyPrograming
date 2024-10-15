@@ -63,7 +63,7 @@ var containers = document.querySelectorAll('.container');
 
                 var imageMap = {
                     'godot': 'gdot.gif',
-                    'naruhodo': 'naruhodo2.png',
+                    'naruhodo': 'naruhodo.gif',
                     'mizzrugi': 'mizzrugi.gif',
                     'mayoi': 'mayoi.png',
                     'karma': 'karma.webp',
