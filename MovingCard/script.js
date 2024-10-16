@@ -6,6 +6,7 @@ var containers = document.querySelectorAll('.container');
         var backdrop = document.getElementById('backdrop');
         var player = document.getElementById('player');
         var playerd;
+        var lastPic = document.getElementById('last-img');
 
         function onYouTubeIframeAPIReady() {
             playerd = new YT.Player('player', {
@@ -62,18 +63,18 @@ var containers = document.querySelectorAll('.container');
                 };
 
                 var imageMap = {
-                    'godot': 'gdot.gif',
-                    'naruhodo': 'naruhodo.gif',
-                    'mizzrugi': 'mizzrugi.gif',
-                    'mayoi': 'mayoi2.png',
-                    'karma': 'karma.gif',
-                    'chihiro': 'chihiro.gif',
-                    'ito' : 'ito.webp',
-                    'harumi' : 'harumi.webp',
-                    'texas' : 'texas.webp',
-                    'yahari' : 'yahari.webp',
-                    'ganto' : 'ganto.webp',
-                    'decision' : 'decision.webp'
+                    'godot': 'godot2.webp',
+                    'naruhodo': 'naruhodo2.webp',
+                    'mizzrugi': 'mizzrugi2.webp',
+                    'mayoi': 'mayoi2.webp',
+                    'karma': 'karma2.webp',
+                    'chihiro': 'chihiro2.webp',
+                    'ito' : 'ito2.webp',
+                    'harumi' : 'harumi2.webp',
+                    'texas' : 'texas2.webp',
+                    'yahari' : 'yahari2.webp',
+                    'ganto' : 'ganto2.webp',
+                    'decision' : 'decision2.webp'
                 };
 
                 var videoMap = {
@@ -91,6 +92,21 @@ var containers = document.querySelectorAll('.container');
                     'decision' : '5bjiGTrR4P0'
                 };
 
+                var lastMap = {
+                    'godot' : 'godot.webp',
+                    'naruhodo' : '',
+                    'mizzrugi' : '',
+                    'mayoi' : '',
+                    'karma' : '',
+                    'chihiro' : '',
+                    'ito' : '',
+                    'harumi' : '',
+                    'texas' : '',
+                    'yahari' : '',
+                    'ganto' : '',
+                    'decision' : ''
+                };
+
                 var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
                 document.getElementById('popup-title').textContent = title; // 제목 설정
 
@@ -99,6 +115,9 @@ var containers = document.querySelectorAll('.container');
 
                 var videoId = videoMap[container.id]; // 카드 ID에 따라 비디오 ID 설정
                 playerd.loadVideoById(videoId); // 비디오 로드
+                
+                //var minipic = lastMap[container.id];
+               // lastPic.style.backgroundImage = `url(${minipic})`;
 
                 popup.style.display = 'block'; // 팝업 열기
                 picture.style.display = 'block';
