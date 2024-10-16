@@ -22,5 +22,5 @@ body {
 }
 
 .filled {
-    background-color: pink; /* 블록을 붉은색으로 표시 */
+    background-color: rgb(4, 238, 255); /* 블록을 붉은색으로 표시 */
 }

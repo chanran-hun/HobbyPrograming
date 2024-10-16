@@ -57,8 +57,10 @@ function getRandomBlock() {
     return blocks[randomIndex];
 }        
 
+var currentBlock = getRandomBlock();    //테스트
+
 // 블록을 보드에 그리는 함수
-function drawTetromino(block, positionX, positionY) {
+function drawBlock(block, positionX, positionY) {
     for (let y = 0; y < block.length; y++) {
         for (let x = 0; x < block[y].length; x++) {
             if (block[y][x] === 1) {
@@ -70,4 +72,29 @@ function drawTetromino(block, positionX, positionY) {
     }
 }        
 
-drawTetromino(getRandomBlock(), 0, 0);       
+function rotateBlock(block){
+    const rotatedBlock = block.map((val,index) => block.map(row => row[index]).reverse())
+    return rotatedBlock;
+}
+
+function removeBlock(block, positionX, positionY){
+    for (let y = 0; y < block.length; y++) {
+        for (let x = 0; x < block[y].length; x++) {
+            if (block[y][x] === 1) {
+                const index = (positionY + y) * 10 + (positionX + x);
+                const cells = document.querySelectorAll('.cell');
+                cells[index].classList.remove('filled');
+            }
+        }
+    }
+}
+
+document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowUp'){
+        removeBlock(currentBlock,0,0);
+        currentBlock = rotateBlock(currentBlock);
+        drawBlock(currentBlock,0,0);
+    }
+})
+
+drawBlock(currentBlock,0,0);     
