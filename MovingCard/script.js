@@ -65,7 +65,7 @@ var containers = document.querySelectorAll('.container');
                     'godot': 'gdot.gif',
                     'naruhodo': 'naruhodo.gif',
                     'mizzrugi': 'mizzrugi.gif',
-                    'mayoi': 'mayoi.png',
+                    'mayoi': 'mayoi2.png',
                     'karma': 'karma.webp',
                     'chihiro': 'chihiro.png',
                     'ito' : 'ito.webp',
@@ -103,6 +103,19 @@ var containers = document.querySelectorAll('.container');
                 popup.style.display = 'block'; // 팝업 열기
                 picture.style.display = 'block';
                 backdrop.style.display = 'block';
+            });
+
+            var isFliped = false;
+            document.getElementById('flipButton').addEventListener('click', function() {
+                var popupimg = document.querySelector('#picture');
+
+                if(isFliped){
+                    popupimg.style.transform = 'scaleX(1)';
+                } else {
+                    popupimg.style.transform = 'scaleX(-1)'; 
+                }
+
+                isFliped = !isFliped;
             });
 
             // 닫기 버튼 클릭 시 팝업 닫기
