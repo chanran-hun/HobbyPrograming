@@ -50,7 +50,6 @@ const blocks = [
         [0, 0, 0]
     ]
 ];            
-
 // 블록을 랜덤으로 선택하는 함수
 function getRandomBlock() {
     const randomIndex = Math.floor(Math.random() * blocks.length);
@@ -58,7 +57,8 @@ function getRandomBlock() {
 }        
 
 var currentBlock = getRandomBlock();    //테스트
-
+var currentX = 0;
+var currentY = 0;
 // 블록을 보드에 그리는 함수
 function drawBlock(block, positionX, positionY) {
     for (let y = 0; y < block.length; y++) {
@@ -89,12 +89,48 @@ function removeBlock(block, positionX, positionY){
     }
 }
 
+function drawNewBlock(){
+    const newBlock = getRandomBlock();
+    currentBlock = newBlock;
+    currentX = 0;
+    currentY = 0;
+    drawBlock(newBlock,0,0);
+}
+
 document.addEventListener('keydown', function(e){
+    //위 방향키 입력 : 90도 회전
     if(e.key === 'ArrowUp'){
-        removeBlock(currentBlock,0,0);
+        removeBlock(currentBlock,currentX,currentY);
         currentBlock = rotateBlock(currentBlock);
-        drawBlock(currentBlock,0,0);
+        drawBlock(currentBlock,currentX,currentY);
+    }
+    //아래 방향키 입력 : 아래로 한칸 내려가기
+    if(e.key === 'ArrowDown'){
+        removeBlock(currentBlock,currentX,currentY);
+        currentY = currentY+1;
+        drawBlock(currentBlock,currentX,currentY);
+    }
+    //오른쪽 방향키 입력 : 오른쪽으로 한칸 움직이기
+    if(e.key === 'ArrowRight'){
+        if( currentX+2)
+        removeBlock(currentBlock,currentX,currentY);
+        currentX = currentX+1;
+        drawBlock(currentBlock,currentX,currentY);
+    }
+    //왼쪽 방향키 입력 : 왼쪽으로 한칸 움직이기
+    if(e.key === 'ArrowLeft'){
+        removeBlock(currentBlock,currentX,currentY);
+        currentX = currentX-1;
+        drawBlock(currentBlock,currentX,currentY);
+    }
+    if(e.key === 'Enter'){
+        removeBlock(currentBlock,currentX,currentY);
+        currentBlock = getRandomBlock();
+        drawBlock(currentBlock,currentX,currentY);
+    }
+    if(e.key === 'Escape'){
+        drawNewBlock();
     }
 })
 
-drawBlock(currentBlock,0,0);     
+drawBlock(currentBlock,currentX,currentY);     
