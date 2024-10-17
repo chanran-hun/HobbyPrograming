@@ -46,22 +46,6 @@ var containers = document.querySelectorAll('.container');
                 var labelText = container.querySelector('.label').innerHTML; // .label의 내용을 가져옴
                 popupContent.innerHTML = labelText; // 팝업에 내용 넣기
 
-                // 제목 설정 (각 카드 ID에 따라 다르게 설정)
-                var titleMap = {
-                    'godot': '고도가 말한다',
-                    'naruhodo': '나루호도가 말한다',
-                    'mizzrugi': '미츠루기가 말한다',
-                    'mayoi': '마요이가 말한다',
-                    'karma': '메이가 말한다',
-                    'chihiro': '치히로가 말한다',
-                    'ito' : '이토노코가 말한다',
-                    'harumi' : '하루미가 말한다',
-                    'texas' : '자이몬이 말한다',
-                    'yahari' : '야하리가 말한다',
-                    'ganto' : '간토 청장이 말한다',
-                    'decision' : '재판장이 말한다'
-                };
-
                 var imageMap = {
                     'godot': 'godot2.webp',
                     'naruhodo': 'naruhodo2.webp',
@@ -93,12 +77,12 @@ var containers = document.querySelectorAll('.container');
                 };
 
                 var lastMap = {
-                    'godot' : 'godot.webp',
-                    'naruhodo' : '',
-                    'mizzrugi' : '',
+                    'godot' : 'godot3.webp',
+                    'naruhodo' : 'naruhodo3.webp',
+                    'mizzrugi' : 'mizzrugi3.webp',
                     'mayoi' : '',
-                    'karma' : '',
-                    'chihiro' : '',
+                    'karma' : 'karma3.webp',
+                    'chihiro' : 'chihiro3.webp',
                     'ito' : '',
                     'harumi' : '',
                     'texas' : '',
@@ -107,17 +91,14 @@ var containers = document.querySelectorAll('.container');
                     'decision' : ''
                 };
 
-                var title = titleMap[container.id]; // 카드 ID에 맞는 제목 가져오기
-                document.getElementById('popup-title').textContent = title; // 제목 설정
-
                 var imageSrc = imageMap[container.id];
                 picture.style.backgroundImage = `url(${imageSrc})`;
 
                 var videoId = videoMap[container.id]; // 카드 ID에 따라 비디오 ID 설정
                 playerd.loadVideoById(videoId); // 비디오 로드
                 
-                //var minipic = lastMap[container.id];
-               // lastPic.style.backgroundImage = `url(${minipic})`;
+                var minipic = lastMap[container.id];
+               lastPic.style.backgroundImage = `url(${minipic})`;
 
                 popup.style.display = 'block'; // 팝업 열기
                 picture.style.display = 'block';
@@ -125,6 +106,7 @@ var containers = document.querySelectorAll('.container');
             });
 
             var isFliped = false;
+            var isFliped2 = false;
             document.getElementById('flipButton').addEventListener('click', function() {
                 var popupimg = document.querySelector('#picture');
 
@@ -132,6 +114,18 @@ var containers = document.querySelectorAll('.container');
                     popupimg.style.transform = 'scaleX(1)';
                 } else {
                     popupimg.style.transform = 'scaleX(-1)'; 
+                }
+
+                isFliped = !isFliped;
+            });
+
+            document.getElementById('flipButton-two').addEventListener('click', function() {
+                var popupimg2 = document.querySelector('#last-img');
+
+                if(isFliped){
+                    popupimg2.style.transform = 'scaleX(1)';
+                } else {
+                    popupimg2.style.transform = 'scaleX(-1)'; 
                 }
 
                 isFliped = !isFliped;

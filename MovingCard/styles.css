@@ -96,15 +96,15 @@ body {
 #popup {
     display : none;
     position: fixed;
-    top : 10px;
-    right : 10px;
-    bottom : 10px;
-    /*transform: translate(-50%, -50%);*/
-    width: 750px;
-    height : 700px;
+    top : 0;
+    right : 0;
+    bottom : 0;
+    width: 50vw;
+    height : 100vh;
+    margin : 0;
     background-color: transparent;
     color: white;
-    padding: 10px;
+    padding: 0;
     border-radius: 10px;
     z-index: 1000; /* 배경보다 위에 표시 */
 }
@@ -112,11 +112,12 @@ body {
 #picture {
     display : none;
     position: fixed; /* 화면의 특정 위치에 고정 */
-    margin:0;
-    top: 10px; 
-    left : 10px;
-    width: 700px;
-    height: 900px;
+    margin : 0;
+    padding : 0;
+    top: 0; 
+    left : 0;
+    width: 50vw;
+    height: 100vh;
     border: none;
     background-color: transparent;
     z-index: 10000; /* z-index를 최상단으로 설정 */
@@ -125,9 +126,14 @@ body {
     background-position: center;
 }
 
+#popup-content {
+    text-align: center;
+    margin : 0;
+    font-size: 20;
+}
+
 #last-img {
-    height : 500px;
-    background-image: 'godot.webp';
+    height : 700px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -136,11 +142,18 @@ body {
 #close-popup{
     position : absolute;
     bottom : 0px;
+    left : 0px;
 }
 
 #flipButton{
     position : absolute;
-    right : 10px;
+    left : 45%;
+    bottom : 0px;
+}
+
+#flipButton-two{
+    position : absolute;
+    right : 0px;
     bottom : 0px;
 }
 
