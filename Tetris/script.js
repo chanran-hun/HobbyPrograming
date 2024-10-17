@@ -9,8 +9,8 @@ for (let i = 0; i < 200; i++) {
 const blocks = [
     //길쭉한거
     [
-        [1, 1, 1, 1],
         [0, 0, 0, 0],
+        [1, 1, 1, 1],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ],
@@ -53,7 +53,7 @@ const blocks = [
 
 const boardWidth = 10;
 const boardHeight = 20;
-var currentBlock = getRandomBlock();    //테스트
+var currentBlock = getRandomBlock();    
 var currentX = 0;
 var currentY = 0;
 
@@ -71,30 +71,28 @@ function drawBlock(block, positionX, positionY) {
 }        
 
 drawBlock(currentBlock,0,0);     
-function getBlockDepth(){
-    var blockDepth = 0;
+
+function getLastIndex(){
+    var lastIndex = 0;
     for(let i = 0; i < currentBlock.length; i++){
         for(let j = 0; j < currentBlock[i].length; j++){
             if(currentBlock[i][j] === 1){
-                blockDepth++;
+                lastIndex = i;
                 break;
             }
         }
     }
-    return blockDepth;
+    return lastIndex;
 }
 
-function isBottom(block,currentY){
-    return getBlockDepth() + currentY < boardHeight;
+function isBottom(){
+    return getLastIndex() + currentY + 1 >= boardHeight;
 }
 // 블록을 랜덤으로 선택하는 함수
 function getRandomBlock() {
     const randomIndex = Math.floor(Math.random() * blocks.length);
     return blocks[randomIndex];
 }        
-
-
-
 
 function rotateBlock(block){
     const rotatedBlock = block.map((val,index) => block.map(row => row[index]).reverse())
@@ -122,29 +120,27 @@ function drawNewBlock(){
 }
 
 function downBlock(){
-    if(isBottom(currentBlock,currentY)){
+    if (!isBottom()) {
         removeBlock(currentBlock,currentX,currentY);
         currentY++;
         drawBlock(currentBlock,currentX,currentY);
     }
 }
 
-var gamepace = setInterval(downBlock,1000);
+//var gamepace = setInterval(downBlock,1000);
 
 document.addEventListener('keydown', function(e){
     //위 방향키 입력 : 90도 회전
     if(e.key === 'ArrowUp'){
+        console.log(getLastIndex());
         removeBlock(currentBlock,currentX,currentY);
         currentBlock = rotateBlock(currentBlock);
         drawBlock(currentBlock,currentX,currentY);
     }
     //아래 방향키 입력 : 아래로 한칸 내려가기
     if(e.key === 'ArrowDown'){
-        if(isBottom(currentBlock,currentY)){
-            removeBlock(currentBlock,currentX,currentY);
-            currentY = currentY+1;
-            drawBlock(currentBlock,currentX,currentY);
-        }
+        console.log(getLastIndex()+currentY);
+        downBlock();
     }
     //오른쪽 방향키 입력 : 오른쪽으로 한칸 움직이기
     if(e.key === 'ArrowRight'){
