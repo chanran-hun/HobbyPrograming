@@ -16,6 +16,11 @@ var containers = document.querySelectorAll('.container');
                 events: {
                     'onReady': function(event) {
                         event.target.playVideo(); // 비디오 자동 재생
+                    },
+                    'onStateChange': function(event) {
+                        if (event.data === YT.PlayerState.ENDED) {
+                            playerd.playVideo(); 
+                        }
                     }
                 }
             });
