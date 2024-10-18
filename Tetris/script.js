@@ -85,8 +85,44 @@ function getLastIndex(){
     return lastIndex;
 }
 
+function getLastLen(){
+    var lastLen = 0;
+    for(let i = 0; i < currentBlock.length; i++){
+        for(let j = 0; j < currentBlock[i].length; j++){
+            if(currentBlock[i][j] === 1){
+                if(j > lastLen){
+                    lastLen = j;
+                }
+            }
+        }
+    }
+    return lastLen;
+}
+
+function getLeft(){
+    var left = 10;
+    for(let i = 0; i < currentBlock.length; i++){
+        for(let j = 0; j < currentBlock[i].length; j++){
+            if(currentBlock[i][j] === 1){
+                if(j < left){
+                    left = j;
+                }
+            }
+        }
+    }
+    return left;
+}
+
 function isBottom(){
     return getLastIndex() + currentY + 1 >= boardHeight;
+}
+
+function isRight(){
+    return getLastLen() + currentX + 1 >= boardWidth;
+}
+
+function isLeft(){
+    return getLeft() + currentX <= 0;
 }
 // 블록을 랜덤으로 선택하는 함수
 function getRandomBlock() {
@@ -124,35 +160,39 @@ function downBlock(){
         removeBlock(currentBlock,currentX,currentY);
         currentY++;
         drawBlock(currentBlock,currentX,currentY);
+    } else {
+        drawNewBlock();
     }
 }
 
-//var gamepace = setInterval(downBlock,1000);
+var gamepace = setInterval(downBlock,1000);
 
 document.addEventListener('keydown', function(e){
     //위 방향키 입력 : 90도 회전
     if(e.key === 'ArrowUp'){
-        console.log(getLastIndex());
         removeBlock(currentBlock,currentX,currentY);
         currentBlock = rotateBlock(currentBlock);
         drawBlock(currentBlock,currentX,currentY);
     }
     //아래 방향키 입력 : 아래로 한칸 내려가기
     if(e.key === 'ArrowDown'){
-        console.log(getLastIndex()+currentY);
         downBlock();
     }
     //오른쪽 방향키 입력 : 오른쪽으로 한칸 움직이기
     if(e.key === 'ArrowRight'){
-        removeBlock(currentBlock,currentX,currentY);
-        currentX = currentX+1;
-        drawBlock(currentBlock,currentX,currentY);
+        if (!isRight()) {
+            removeBlock(currentBlock,currentX,currentY);
+            currentX++;
+            drawBlock(currentBlock,currentX,currentY);
+        }
     }
     //왼쪽 방향키 입력 : 왼쪽으로 한칸 움직이기
     if(e.key === 'ArrowLeft'){
-        removeBlock(currentBlock,currentX,currentY);
-        currentX = currentX-1;
-        drawBlock(currentBlock,currentX,currentY);
+        if (!isLeft()) {
+            removeBlock(currentBlock,currentX,currentY);
+            currentX = currentX-1;
+            drawBlock(currentBlock,currentX,currentY);
+        }
     }
     if(e.key === 'Enter'){
         removeBlock(currentBlock,currentX,currentY);
