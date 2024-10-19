@@ -6,6 +6,8 @@ for (let i = 0; i < 200; i++) {
     board.appendChild(cell);
 }
 
+const boardState = Array(boardHeight).fill(null).map(() => Array(boardWidth).fill(0));  //[10][20] 배열 현재상태
+
 const blocks = [
     //길쭉한거
     [
@@ -56,6 +58,16 @@ const boardHeight = 20;
 var currentBlock = getRandomBlock();    
 var currentX = 0;
 var currentY = 0;
+
+function updateBoard(value){
+    for(let y = 0; y < currentBlock.length; y++){
+        for(let x = 0; x < currentBlock[y].length; x++){
+            if(currentBlock[y][x] === 1){
+                boardState[y][x] = value;   
+            }
+        }
+    }
+}
 
 // 블록을 보드에 그리는 함수
 function drawBlock(block, positionX, positionY) {
