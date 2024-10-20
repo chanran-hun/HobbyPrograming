@@ -6,8 +6,6 @@ for (let i = 0; i < 200; i++) {
     board.appendChild(cell);
 }
 
-const boardState = Array(boardHeight).fill(null).map(() => Array(boardWidth).fill(0));  //[10][20] 배열 현재상태
-
 const blocks = [
     //길쭉한거
     [
@@ -55,47 +53,48 @@ const blocks = [
 
 const boardWidth = 10;
 const boardHeight = 20;
-var currentBlock = getRandomBlock();    
+var currentBlock = getRandomBlock();       
 var currentX = 0;
 var currentY = 0;
+const boardState = Array(boardHeight).fill(null).map(() => Array(boardWidth).fill(0));  //[10][20] 배열 현재상태
 
 function updateBoard(value){
     for(let y = 0; y < currentBlock.length; y++){
         for(let x = 0; x < currentBlock[y].length; x++){
             if(currentBlock[y][x] === 1){
-                boardState[y][x] = value;   
+                boardState[currentY + y][currentX + x] = value;   
             }
         }
     }
 }
 
 function drawBoard(){
-    const cells = document.querySelector('.cell');
+    const cells = document.querySelectorAll('.cell');
     for(let y = 0; y < boardHeight; y++){
         for(let x = 0; x < boardWidth; x++){
             const index = y * boardWidth + x;
             if( boardState[y][x] === 1){
-                cells[index].classList.add('.filled');
+                cells[index].classList.add('filled');
             } else {
-                cells[index].classList.remove('.filled');
+                cells[index].classList.remove('filled');
             }
         }
     }
 }
 // 블록을 보드에 그리는 함수
-function drawBlock(block, positionX, positionY) {
-    for (let y = 0; y < block.length; y++) {
-        for (let x = 0; x < block[y].length; x++) {
-            if (block[y][x] === 1) {
-                const index = (positionY + y) * 10 + (positionX + x);
-                const cells = document.querySelectorAll('.cell');
-                cells[index].classList.add('filled');
-            }
-        }
-    }
+function drawBlock() {
+    updateBoard(1);
+    drawBoard();
 }        
 
-drawBlock(currentBlock,0,0);     
+function removeBlock(){
+    updateBoard(0);
+    drawBoard();
+}
+
+drawBlock();     
+console.log(currentBlock);
+var flow = setInterval(downBlock,1000);
 
 function getLastIndex(){
     var lastIndex = 0;
@@ -160,18 +159,6 @@ function rotateBlock(block){
     return rotatedBlock;
 }
 
-function removeBlock(block, positionX, positionY){
-    for (let y = 0; y < block.length; y++) {
-        for (let x = 0; x < block[y].length; x++) {
-            if (block[y][x] === 1) {
-                const index = (positionY + y) * 10 + (positionX + x);
-                const cells = document.querySelectorAll('.cell');
-                cells[index].classList.remove('filled');
-            }
-        }
-    }
-}
-
 function drawNewBlock(){
     const newBlock = getRandomBlock();
     currentBlock = newBlock;
@@ -182,15 +169,13 @@ function drawNewBlock(){
 
 function downBlock(){
     if (!isBottom()) {
-        removeBlock(currentBlock,currentX,currentY);
+        removeBlock();
         currentY++;
-        drawBlock(currentBlock,currentX,currentY);
+        drawBlock();
     } else {
         drawNewBlock();
     }
 }
-
-var gamepace = setInterval(downBlock,1000);
 
 document.addEventListener('keydown', function(e){
     //위 방향키 입력 : 90도 회전
