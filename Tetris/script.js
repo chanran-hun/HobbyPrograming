@@ -69,6 +69,19 @@ function updateBoard(value){
     }
 }
 
+function drawBoard(){
+    const cells = document.querySelector('.cell');
+    for(let y = 0; y < boardHeight; y++){
+        for(let x = 0; x < boardWidth; x++){
+            const index = y * boardWidth + x;
+            if( boardState[y][x] === 1){
+                cells[index].classList.add('.filled');
+            } else {
+                cells[index].classList.remove('.filled');
+            }
+        }
+    }
+}
 // 블록을 보드에 그리는 함수
 function drawBlock(block, positionX, positionY) {
     for (let y = 0; y < block.length; y++) {
