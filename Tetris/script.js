@@ -92,6 +92,22 @@ function removeBlock(){
     drawBoard();
 }
 
+function isCollison(){
+    for(let y = 0; y < currentBlock.length; y++){
+        for(let x = 0; x < currentBlock[y].length; x++){
+            if( currentBlock[y][x] === 1){
+                const boardY = currentY + y;
+                const boardX = currentX + x;
+
+                if(boardY >= boardHeight || boardState[boardY][boardX] === 1){
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 drawBlock();     
 console.log(currentBlock);
 var flow = setInterval(downBlock,1000);
