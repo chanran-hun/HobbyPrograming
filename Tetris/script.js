@@ -108,6 +108,18 @@ function isCollison(){
     return false;
 }
 
+function lockBlock(){
+    for(let y = 0; y < currentBlock.length; y++){
+        for(let x = 0; x < currentBlock[y].length; x++){
+            if( currentBlock[y][x] === 1){
+                const boardY = currentY + y;
+                const boardX = currentX + x;
+                boardState[boardY][boardX] = 1;
+            }
+        }
+    }
+}
+
 drawBlock();     
 console.log(currentBlock);
 var flow = setInterval(downBlock,1000);
