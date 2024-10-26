@@ -92,13 +92,25 @@ function removeBlock(){
     drawBoard();
 }
 
+function getLastIndex(){
+    var lastIndex = 0;
+    for(let i = 0; i < currentBlock.length; i++){
+        for(let j = 0; j < currentBlock[i].length; j++){
+            if(currentBlock[i][j] === 1){
+                lastIndex = i;
+                break;
+            }
+        }
+    }
+    return lastIndex;
+}
+
 function isCollison(){
     for(let y = 0; y < currentBlock.length; y++){
         for(let x = 0; x < currentBlock[y].length; x++){
             if( currentBlock[y][x] === 1){
                 const boardY = currentY + y;
                 const boardX = currentX + x;
-
                 if(boardY >= boardHeight || boardState[boardY][boardX] === 1){
                     return true;
                 }
@@ -121,21 +133,7 @@ function lockBlock(){
 }
 
 drawBlock();     
-console.log(currentBlock);
 var flow = setInterval(downBlock,1000);
-
-function getLastIndex(){
-    var lastIndex = 0;
-    for(let i = 0; i < currentBlock.length; i++){
-        for(let j = 0; j < currentBlock[i].length; j++){
-            if(currentBlock[i][j] === 1){
-                lastIndex = i;
-                break;
-            }
-        }
-    }
-    return lastIndex;
-}
 
 function getLastLen(){
     var lastLen = 0;
@@ -165,10 +163,6 @@ function getLeft(){
     return left;
 }
 
-function isBottom(){
-    return getLastIndex() + currentY + 1 >= boardHeight;
-}
-
 function isRight(){
     return getLastLen() + currentX + 1 >= boardWidth;
 }
@@ -196,11 +190,13 @@ function drawNewBlock(){
 }
 
 function downBlock(){
-    if (!isBottom()) {
-        removeBlock();
-        currentY++;
+    removeBlock();
+    currentY++;
+    if (!isCollison()) {
         drawBlock();
     } else {
+        currentY--;
+        lockBlock();
         drawNewBlock();
     }
 }
@@ -236,8 +232,5 @@ document.addEventListener('keydown', function(e){
         removeBlock(currentBlock,currentX,currentY);
         currentBlock = getRandomBlock();
         drawBlock(currentBlock,currentX,currentY);
-    }
-    if(e.key === 'Escape'){
-        drawNewBlock();
     }
 })
