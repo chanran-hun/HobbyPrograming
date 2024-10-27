@@ -81,6 +81,29 @@ function drawBoard(){
         }
     }
 }
+
+function isFull(boardY){
+    var result = 0;    
+    for(let x = 0; x < boardWidth; x++){
+        if(boardState[boardY][x] === 1){
+            result++;
+        }
+    }
+
+    if(result === boardWidth){
+        return true;
+    }
+
+    return false;
+        
+}
+
+function eraseLine(boardY){
+    for(let x = 0; x < boardWidth; x++){
+        boardState[boardY][x] = 0;
+    }
+}
+
 // 블록을 보드에 그리는 함수
 function drawBlock() {
     updateBoard(1);
@@ -111,7 +134,7 @@ function isCollison(){
             if( currentBlock[y][x] === 1){
                 const boardY = currentY + y;
                 const boardX = currentX + x;
-                if(boardY >= boardHeight || boardState[boardY][boardX] === 1){
+                if(boardY >= boardHeight || boardState[boardY][boardX] === 1 || boardX >= boardWidth || boardX < 0){
                     return true;
                 }
             }
@@ -135,41 +158,6 @@ function lockBlock(){
 drawBlock();     
 var flow = setInterval(downBlock,1000);
 
-function getLastLen(){
-    var lastLen = 0;
-    for(let i = 0; i < currentBlock.length; i++){
-        for(let j = 0; j < currentBlock[i].length; j++){
-            if(currentBlock[i][j] === 1){
-                if(j > lastLen){
-                    lastLen = j;
-                }
-            }
-        }
-    }
-    return lastLen;
-}
-
-function getLeft(){
-    var left = 10;
-    for(let i = 0; i < currentBlock.length; i++){
-        for(let j = 0; j < currentBlock[i].length; j++){
-            if(currentBlock[i][j] === 1){
-                if(j < left){
-                    left = j;
-                }
-            }
-        }
-    }
-    return left;
-}
-
-function isRight(){
-    return getLastLen() + currentX + 1 >= boardWidth;
-}
-
-function isLeft(){
-    return getLeft() + currentX <= 0;
-}
 // 블록을 랜덤으로 선택하는 함수
 function getRandomBlock() {
     const randomIndex = Math.floor(Math.random() * blocks.length);
@@ -196,17 +184,26 @@ function downBlock(){
         drawBlock();
     } else {
         currentY--;
-        lockBlock();
+        lockBlock();  
+
+        for(let y = 0; y < boardHeight; y++){
+            if(isFull(y)){
+                eraseLine(y);
+            }
+        }
+
         drawNewBlock();
+
+        
     }
 }
 
 document.addEventListener('keydown', function(e){
     //위 방향키 입력 : 90도 회전
     if(e.key === 'ArrowUp'){
-        removeBlock(currentBlock,currentX,currentY);
+        removeBlock();
         currentBlock = rotateBlock(currentBlock);
-        drawBlock(currentBlock,currentX,currentY);
+        drawBlock();
     }
     //아래 방향키 입력 : 아래로 한칸 내려가기
     if(e.key === 'ArrowDown'){
@@ -214,23 +211,24 @@ document.addEventListener('keydown', function(e){
     }
     //오른쪽 방향키 입력 : 오른쪽으로 한칸 움직이기
     if(e.key === 'ArrowRight'){
-        if (!isRight()) {
-            removeBlock(currentBlock,currentX,currentY);
-            currentX++;
-            drawBlock(currentBlock,currentX,currentY);
+        removeBlock();
+        currentX++;
+        if (!isCollison()) {
+            drawBlock();
+        } else {
+            currentX--;
+            drawBlock();
         }
     }
     //왼쪽 방향키 입력 : 왼쪽으로 한칸 움직이기
     if(e.key === 'ArrowLeft'){
-        if (!isLeft()) {
-            removeBlock(currentBlock,currentX,currentY);
-            currentX = currentX-1;
-            drawBlock(currentBlock,currentX,currentY);
+        removeBlock();
+        currentX--;
+        if (!isCollison()) {
+            drawBlock();
+        } else {
+            currentX++;
+            drawBlock();
         }
-    }
-    if(e.key === 'Enter'){
-        removeBlock(currentBlock,currentX,currentY);
-        currentBlock = getRandomBlock();
-        drawBlock(currentBlock,currentX,currentY);
     }
 })
