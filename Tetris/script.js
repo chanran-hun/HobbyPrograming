@@ -128,10 +128,10 @@ function getLastIndex(){
     return lastIndex;
 }
 
-function isCollison(){
-    for(let y = 0; y < currentBlock.length; y++){
-        for(let x = 0; x < currentBlock[y].length; x++){
-            if( currentBlock[y][x] === 1){
+function isCollison(block){
+    for(let y = 0; y < block.length; y++){
+        for(let x = 0; x < block[y].length; x++){
+            if( block[y][x] === 1){
                 const boardY = currentY + y;
                 const boardX = currentX + x;
                 if(boardY >= boardHeight || boardState[boardY][boardX] === 1 || boardX >= boardWidth || boardX < 0){
@@ -166,7 +166,11 @@ function getRandomBlock() {
 
 function rotateBlock(block){
     const rotatedBlock = block.map((val,index) => block.map(row => row[index]).reverse())
-    return rotatedBlock;
+    if(!isCollison(rotatedBlock)){
+        return rotatedBlock;
+    } else {
+        return currentBlock;
+    }
 }
 
 function drawNewBlock(){
@@ -180,7 +184,7 @@ function drawNewBlock(){
 function downBlock(){
     removeBlock();
     currentY++;
-    if (!isCollison()) {
+    if (!isCollison(currentBlock)) {
         drawBlock();
     } else {
         currentY--;
@@ -189,6 +193,14 @@ function downBlock(){
         for(let y = 0; y < boardHeight; y++){
             if(isFull(y)){
                 eraseLine(y);
+                for(let h = y-1; h >= 0; h--){
+                    for(let x = 0; x < boardWidth; x++){
+                        if(boardState[h][x] === 1){
+                            boardState[h][x] = 0;
+                            boardState[h+1][x] = 1;
+                        }
+                    }
+                }
             }
         }
 
@@ -213,7 +225,7 @@ document.addEventListener('keydown', function(e){
     if(e.key === 'ArrowRight'){
         removeBlock();
         currentX++;
-        if (!isCollison()) {
+        if (!isCollison(currentBlock)) {
             drawBlock();
         } else {
             currentX--;
@@ -224,7 +236,7 @@ document.addEventListener('keydown', function(e){
     if(e.key === 'ArrowLeft'){
         removeBlock();
         currentX--;
-        if (!isCollison()) {
+        if (!isCollison(currentBlock)) {
             drawBlock();
         } else {
             currentX++;
