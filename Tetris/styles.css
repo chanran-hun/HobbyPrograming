@@ -24,3 +24,9 @@ body {
 .filled {
     background-color: rgb(4, 238, 255); /* 블록을 붉은색으로 표시 */
 }
+
+h1 {
+   position :absolute;
+   left : 10px;
+   top : 0px; 
+}

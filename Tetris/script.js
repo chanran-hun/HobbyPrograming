@@ -54,9 +54,16 @@ const blocks = [
 const boardWidth = 10;
 const boardHeight = 20;
 var currentBlock = getRandomBlock();       
-var currentX = 0;
+var currentX = 4;
 var currentY = 0;
 const boardState = Array(boardHeight).fill(null).map(() => Array(boardWidth).fill(0));  //[10][20] 배열 현재상태
+var point = document.querySelector("h1");
+var score = 0;
+point.textContent += score;
+
+function updateScore() {
+    point.textContent = "점수: " + score; // 실시간으로 점수를 업데이트
+}
 
 function updateBoard(value){
     for(let y = 0; y < currentBlock.length; y++){
@@ -176,9 +183,16 @@ function rotateBlock(block){
 function drawNewBlock(){
     const newBlock = getRandomBlock();
     currentBlock = newBlock;
-    currentX = 0;
+    currentX = 4;
     currentY = 0;
-    drawBlock(newBlock,0,0);
+
+    if (isCollison(currentBlock)) {
+        clearInterval(flow); // 게임 루프 중단
+        alert("Game Over!"); // 게임 오버 알림
+        return;
+    }
+
+    drawBlock();
 }
 
 function downBlock(){
@@ -190,9 +204,13 @@ function downBlock(){
         currentY--;
         lockBlock();  
 
+        var count = 0;
         for(let y = 0; y < boardHeight; y++){
             if(isFull(y)){
                 eraseLine(y);
+                score += 100+count;
+                updateScore()
+                count += 10;
                 for(let h = y-1; h >= 0; h--){
                     for(let x = 0; x < boardWidth; x++){
                         if(boardState[h][x] === 1){
@@ -205,7 +223,6 @@ function downBlock(){
         }
 
         drawNewBlock();
-
         
     }
 }
