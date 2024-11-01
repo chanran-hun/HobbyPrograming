@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>날씨 정보</h1>
-    <input type="text" id="city" placeholder="도시 이름 입력">
-    <button id="searchBtn">검색</button>
-    <div id="weatherInfo"></div>
+    <h1>도시 선택</h1>
+    <p id="time">현재 시간 :</p>
+    <select id="city_select">
+        <option value="Seoul">서울</option>
+        <option value="Busan">부산</option>
+        <option value="Incheon">인천</option>
+        <option value="Anyang">안양</option>
+        <option value="Jeju">제주도</option>
+    </select>
+    <button id="get_weather">날씨 확인</button>
+    <div id="weather_info"></div>
     <script src="script.js"></script>
 </body>
