@@ -1,0 +1,38 @@
+.champ-container {
+    flex-wrap: wrap;    /*공간이 모자라면 줄바꿈을 할 수 있도록 함*/
+    margin: 10px;       /*이 요소의 주변에 20px의 여백이 생김*/
+}
+
+.champ {
+    width: 250px;
+    height: 140px;
+    margin: 10px;
+}
+
+.photo {
+    position : relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size :contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.name {
+    position : absolute;
+    bottom : 0px;
+    left : 0px;
+    background-color: aliceblue;
+}
+
+.cost {
+    position : absolute;
+    bottom : 0px;
+    right : 0px;
+    background-color: aliceblue;
+}
+
+#gwen .photo{
+    background-image: url("img/gwen.webp");
+}
