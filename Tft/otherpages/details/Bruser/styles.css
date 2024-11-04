@@ -1,11 +1,13 @@
-.champ-container {
+#champ-container {
+    display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;    /*공간이 모자라면 줄바꿈을 할 수 있도록 함*/
     margin: 10px;       /*이 요소의 주변에 20px의 여백이 생김*/
 }
 
 .champ {
-    width: 250px;
-    height: 140px;
+    width: 255px;
+    height: 151px;
     margin: 10px;
 }
 
@@ -33,6 +35,3 @@
     background-color: aliceblue;
 }
 
-#gwen .photo{
-    background-image: url("img/gwen.webp");
-}
