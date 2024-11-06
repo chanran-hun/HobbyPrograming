@@ -67,3 +67,8 @@ h1{
 strong {
     color: red;
 }
+
+h2 {
+    text-align: center;
+    font-size: 40px;
+}

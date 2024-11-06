@@ -1,9 +1,9 @@
 const champions = [
-    { name: "그웬", cost: 4, id: "gwen", imgUrl: "img/gwen.png" },
-    { name: "모르가나", cost: 5, id: "morgana", imgUrl: "img/morgana.webp" },
-    { name: "카타리나", cost: 3, id: "katarina", imgUrl: "img/katarina.webp" },
-    { name: "다이애나", cost: 5, id: "diana", imgUrl: "img/diana.webp" },
-    { name: "카사딘", cost: 2, id: "kasadin", imgUrl: "img/kasadin.webp" }
+    { name: "그웬", cost: 4, imgUrl: "img/gwen.png" },
+    { name: "모르가나", cost: 5, imgUrl: "img/morgana.webp" },
+    { name: "카타리나", cost: 3, imgUrl: "img/katarina.webp" },
+    { name: "다이애나", cost: 5, imgUrl: "img/diana.webp" },
+    { name: "카사딘", cost: 2, imgUrl: "img/kasadin.webp" }
 ];
 
 const items = [
@@ -13,7 +13,6 @@ const items = [
 ];
 
 const champContainer = document.getElementById("champ-container");
-const recommand = document.getElementById("item-recomand");
 
 champions.forEach(champ => {
     const champDiv = document.createElement("div");
@@ -40,6 +39,8 @@ champions.forEach(champ => {
 
     champContainer.appendChild(champDiv);
 });
+
+const recommand = document.getElementById("item-recomand");
 
 items.forEach(item => {
     const img = document.createElement('img'); 
