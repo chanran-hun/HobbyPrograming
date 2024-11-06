@@ -44,3 +44,26 @@ h1{
     font-size: 40px; 
     font-weight: bold;
 }
+
+.item-set{
+    margin-left: 20px;
+    display: flex;
+    align-items: center; /* 사진과 텍스트의 세로 정렬을 맞춤 */
+}
+
+.item-photo{
+    border-radius: 10px;
+    margin-right: 10px;
+    width : 100px;
+}
+
+.item-discription{
+    width : 1300px;
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+strong {
+    color: red;
+}

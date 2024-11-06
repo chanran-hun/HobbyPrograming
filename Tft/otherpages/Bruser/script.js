@@ -49,3 +49,9 @@ items.forEach(item => {
 
     recommand.appendChild(img);              
 });
+
+const photos = [
+    { id: "gwen", description: "그웬은 4코스트 챔피언입니다." },
+    { id: "morgana", description: "모르가나는 5코스트 주문력 전사입니다." },
+    // 기타 챔피언 설명 추가
+];
