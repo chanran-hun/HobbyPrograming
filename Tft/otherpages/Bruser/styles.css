@@ -39,3 +39,8 @@ h1{
     background-color: aliceblue;
 }
 
+#item-recomand {
+    text-align: center;
+    font-size: 40px; 
+    font-weight: bold;
+}

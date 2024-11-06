@@ -6,7 +6,14 @@ const champions = [
     { name: "카사딘", cost: 2, id: "kasadin", imgUrl: "img/kasadin.webp" }
 ];
 
+const items = [
+    {name: "이온", imgUrl: "img/ion.png"},
+    {name: "피바", imgUrl: "img/piba.png"},
+    {name: "보건", imgUrl: "img/bogun.png"}
+];
+
 const champContainer = document.getElementById("champ-container");
+const recommand = document.getElementById("item-recomand");
 
 champions.forEach(champ => {
     const champDiv = document.createElement("div");
@@ -32,4 +39,13 @@ champions.forEach(champ => {
     champDiv.appendChild(photoDiv);
 
     champContainer.appendChild(champDiv);
+});
+
+items.forEach(item => {
+    const img = document.createElement('img'); 
+    img.src = item.imgUrl;                                                
+    img.style.width = '100px';              
+    img.style.margin = '0px';
+
+    recommand.appendChild(img);              
 });
