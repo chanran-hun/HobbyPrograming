@@ -5,10 +5,10 @@ const champions = [
     { name: "뽀삐", cost: 1, imgUrl: "img/Poppi.webp" },
     { name: "워윅", cost: 1, imgUrl: "img/Warwick.webp" },
     { name: "헤카림", cost: 3, imgUrl: "img/hecarim.webp" },
-    { name: "닐라", cost: 2, imgUrl: "img/nila.webp" },
+    { name: "닐라", cost: 2, imgUrl: "img/Nilah.webp" },
     { name: "피오라", cost: 4, imgUrl: "img/fiora.webp" },
     { name: "제이스", cost: 1, imgUrl: "img/jayce.webp" },
-    { name: "아칼리", cost: 2, imgUrl: "img/acarli.webp" }
+    { name: "아칼리", cost: 2, imgUrl: "img/Akali.webp" }
 ];
 
 const champContainer = document.getElementById("champ-container");
