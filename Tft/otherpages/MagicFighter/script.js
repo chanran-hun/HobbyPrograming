@@ -7,9 +7,9 @@ const champions = [
 ];
 
 const items = [
-    {name: "이온", imgUrl: "img/ion.png"},
-    {name: "피바", imgUrl: "img/piba.png"},
-    {name: "크가", imgUrl: "img/crowngaurd.png"}
+    {imgUrl: "img/ion.png"},
+    {imgUrl: "img/piba.png"},
+    {imgUrl: "img/crowngaurd.png"}
 ];
 
 const champContainer = document.getElementById("champ-container");
