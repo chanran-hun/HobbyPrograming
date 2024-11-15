@@ -1,0 +1,74 @@
+h1{
+    text-align: center  ;
+}
+
+#champ-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;    /*공간이 모자라면 줄바꿈을 할 수 있도록 함*/
+    margin: 10px;       /*이 요소의 주변에 20px의 여백이 생김*/
+}
+
+.champ {
+    width: 255px;
+    height: 151px;
+    margin: 10px;
+}
+
+.photo {
+    position : relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size :contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.name {
+    position : absolute;
+    bottom : 0px;
+    left : 0px;
+    background-color: aliceblue;
+}
+
+.cost {
+    position : absolute;
+    bottom : 0px;
+    right : 0px;
+    background-color: aliceblue;
+}
+
+#item-recomand {
+    text-align: center;
+    font-size: 40px; 
+    font-weight: bold;
+}
+
+.item-set{
+    margin-left: 20px;
+    display: flex;
+    align-items: center; /* 사진과 텍스트의 세로 정렬을 맞춤 */
+}
+
+.item-photo{
+    border-radius: 10px;
+    margin-right: 10px;
+    width : 100px;
+}
+
+.item-discription{
+    width : 92vw;
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+strong {
+    color: red;
+}
+
+h2 {
+    text-align: center;
+    font-size: 40px;
+}
