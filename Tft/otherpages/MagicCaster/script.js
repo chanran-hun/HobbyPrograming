@@ -4,17 +4,18 @@ const champions = [
     { name: "밀리오", cost: 5, imgUrl: "img/Milio.webp" },
     { name: "나미", cost: 4, imgUrl: "img/Nami.webp" },
     { name: "라이즈", cost: 4, imgUrl: "img/Ryze.webp" },
-    { name: "헤카림", cost: 3, imgUrl: "img/Hecarim.webp" },
-    { name: "닐라", cost: 2, imgUrl: "img/Nilah.webp" },
-    { name: "피오라", cost: 4, imgUrl: "img/Fiora.webp" },
-    { name: "제이스", cost: 1, imgUrl: "img/Jayce.webp" },
-    { name: "아칼리", cost: 2, imgUrl: "img/Akali.webp" }
-];
-
-const items = [
-    {imgUrl: "img/giant.png"},
-    {imgUrl: "img/piba.png"},
-    {imgUrl: "img/Sterak.png"}
+    { name: "베이가", cost: 3, imgUrl: "" },
+    { name: "직스", cost: 1, imgUrl: "" },
+    { name: "조이", cost: 1, imgUrl: "" },
+    { name: "아리", cost: 2, imgUrl: "" },
+    { name: "세라핀", cost: 1, imgUrl: "" },
+    { name: "소라카", cost: 1, imgUrl: "" },
+    { name: "바드", cost: 3, imgUrl: "" },
+    { name: "신드라", cost: 2, imgUrl: "" },
+    { name: "질리언", cost: 2, imgUrl: "" },
+    { name: "흐웨이", cost: 3, imgUrl: "" },
+    { name: "카시오페아", cost: 2, imgUrl: "" },
+    { name: "카르마", cost: 4, imgUrl: "" }
 ];
 
 const champContainer = document.getElementById("champ-container");
@@ -43,15 +44,4 @@ champions.forEach(champ => {
     champDiv.appendChild(photoDiv);
 
     champContainer.appendChild(champDiv);
-});
-
-const recommand = document.getElementById("item-recomand");
-
-items.forEach(item => {
-    const img = document.createElement('img'); 
-    img.src = item.imgUrl;                                                
-    img.style.width = '100px';              
-    img.style.margin = '0px';
-
-    recommand.appendChild(img);              
 });
