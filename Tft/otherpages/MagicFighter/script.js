@@ -1,15 +1,14 @@
 const champions = [
-    { name: "그웬", cost: 4, imgUrl: "img/gwen.png" },
-    { name: "모르가나", cost: 5, imgUrl: "img/morgana.webp" },
-    { name: "카타리나", cost: 3, imgUrl: "img/katarina.webp" },
-    { name: "다이애나", cost: 5, imgUrl: "img/diana.webp" },
-    { name: "카사딘", cost: 2, imgUrl: "img/kasadin.webp" }
+    { name: "럼블", cost: 5, imgUrl: "img/Rumble.jpg" },
+    { name: "모데카이저", cost: 5, imgUrl: "img/Mordekaiser.jpg" },
+    { name: "에코", cost: 4, imgUrl: "img/Ekko.jpg" },
+    { name: "아칼리", cost: 2, imgUrl: "img/Akali.jpg" }
 ];
 
 const items = [
     {imgUrl: "img/ion.png"},
-    {imgUrl: "img/piba.png"},
-    {imgUrl: "img/crowngaurd.png"}
+    {imgUrl: "img/nicetouch.png"},
+    {imgUrl: "img/bogun.png"}
 ];
 
 const champContainer = document.getElementById("champ-container");
