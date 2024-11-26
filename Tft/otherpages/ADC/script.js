@@ -1,13 +1,15 @@
 const champions = [
-    { name: "스몰더", cost: 5, imgUrl: "" },
-    { name: "칼리스타", cost: 4, imgUrl: "" },
-    { name: "바루스", cost: 4, imgUrl: "" },
-    { name: "징크스", cost: 3, imgUrl: "" },
-    { name: "이즈리얼", cost: 3, imgUrl: "" },
-    { name: "트리스타나", cost: 2, imgUrl: "" },
-    { name: "트위치", cost: 1, imgUrl: "" },
-    { name: "뇸뇸이", cost: 1, imgUrl: "" },
-    { name: "애쉬", cost: 1, imgUrl: "" }
+    { name: "제이스", cost: 5, imgUrl: "img/Jayce.jpg" },
+    { name: "징크스", cost: 5, imgUrl: "img/Jinx.jpg" },
+    { name: "케이틀린", cost: 5, imgUrl: "img/Caitlyn.jpg" },
+    { name: "트위치", cost: 4, imgUrl: "img/Twitch.jpg" },
+    { name: "코르키", cost: 4, imgUrl: "img/Corki.jpg" },
+    { name: "이즈리얼", cost: 3, imgUrl: "img/Ezreal.jpg" },
+    { name: "갱플랭크", cost: 3, imgUrl: "img/Gangplank.jpg" },
+    { name: "제리", cost: 2, imgUrl: "img/Zeri.jpg" },
+    { name: "트리스타나", cost: 2, imgUrl: "img/Tristana.jpg" },
+    { name: "드레이븐", cost: 1, imgUrl: "img/Draven.jpg" },
+    { name: "매디", cost: 1, imgUrl: "img/Maddie.jpg" }
 ];
 
 const champContainer = document.getElementById("champ-container");
