@@ -1,0 +1,6 @@
+﻿  story.cpp
+E:\HobbyPrograming\TRPG\story.cpp(12,21): warning C4566: 유니버설 문자 이름 '\U0001F3E1'(으)로 표현되는 문자는 현재 코드 페이지(949)에서 표현할 수 없습니다.
+E:\HobbyPrograming\TRPG\story.cpp(37,17): warning C4566: 유니버설 문자 이름 '\U0001F474'(으)로 표현되는 문자는 현재 코드 페이지(949)에서 표현할 수 없습니다.
+E:\HobbyPrograming\TRPG\story.cpp(41,17): warning C4566: 유니버설 문자 이름 '\U0001F6D2'(으)로 표현되는 문자는 현재 코드 페이지(949)에서 표현할 수 없습니다.
+E:\HobbyPrograming\TRPG\story.cpp(45,17): warning C4566: 유니버설 문자 이름 '\U0001F4A4'(으)로 표현되는 문자는 현재 코드 페이지(949)에서 표현할 수 없습니다.
+  TRPG.vcxproj -> E:\HobbyPrograming\TRPG\x64\Debug\TRPG.exe
